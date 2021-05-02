@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NextAndLearn</string>
+    <string name="Vocabulario">Vocabulario</string>
+    <string name="Tests">Tests</string>
 </resources>
