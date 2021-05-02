@@ -12,7 +12,7 @@ import androidx.room.PrimaryKey
         - coleccion: Nombre de la colección de vocabulario a la que pertenece la palabra, de tipo String.
  */
 
-@Entity(tableName = "Vocabulario")
+@Entity(tableName = "Palabras")
 data class Palabra(val espanol:String,
                        @PrimaryKey val ingles: String,
                        val imagen:String,
