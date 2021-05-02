@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/icono_mapa"
+        android:icon="@drawable/vocabulario_icono"
+        android:title="@string/Vocabulario"
+        android:color="@color/black" android:state_checked="true"
+        />
+
+    <item
+        android:id="@+id/icono_recorridos"
+        android:icon="@drawable/tests_icono"
+        android:title="@string/Tests"/>
+</menu>
