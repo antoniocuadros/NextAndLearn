@@ -1,4 +1,11 @@
 package com.example.nextandlearn.modelo
 
-data class Vocabulario(val espanol:String, val ingles: String, val imagen:String) {
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "Vocabulario")
+data class Vocabulario(val espanol:String,
+                       @PrimaryKey val ingles: String,
+                       val imagen:String)
+{
 }
