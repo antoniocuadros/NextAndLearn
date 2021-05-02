@@ -17,7 +17,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
+    /*
+    Este método sirve para vincular nuestro Navigation Component con el menú inferior
+    con el objetivo de que al pulsar sobre un item del menú se cargue el fragmento
+    asociado a dicho item del menú.
+     */
     private fun estableceControlNavegacion(){
         val menu_inferior = findViewById<BottomNavigationView>(R.id.menu_inferior)
         val controlador_navegacion = findNavController(R.id.fragment2)
