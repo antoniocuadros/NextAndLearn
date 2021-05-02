@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/listaVocabulario"
-        android:name="com.example.nextandlearn.fragmentoListaVocabulario"
+        android:name="com.example.nextandlearn.fragmentos.fragmentoListaVocabulario"
         android:label="fragment_fragmento_lista_vocabulario"
         tools:layout="@layout/fragment_fragmento_lista_vocabulario" />
     <fragment
         android:id="@+id/tests"
-        android:name="com.example.nextandlearn.fragmentoTests"
+        android:name="com.example.nextandlearn.fragmentos.fragmentoTests"
         android:label="fragment_fragmento_tests"
         tools:layout="@layout/fragment_fragmento_tests" />
 </navigation>

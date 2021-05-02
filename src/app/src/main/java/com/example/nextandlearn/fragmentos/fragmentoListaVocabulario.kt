@@ -1,16 +1,17 @@
-package com.example.nextandlearn
+package com.example.nextandlearn.fragmentos
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.nextandlearn.R
 
 
-class fragmentoTests : Fragment() {
+class fragmentoListaVocabulario : Fragment() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -18,7 +19,7 @@ class fragmentoTests : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragmento_tests, container, false)
+        return inflater.inflate(R.layout.fragment_fragmento_lista_vocabulario, container, false)
     }
 
 }

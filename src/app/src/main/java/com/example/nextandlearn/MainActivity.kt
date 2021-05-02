@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         //Establecemos el controlador del menu inferior
         estableceControlNavegacion()
 
-        
+
     }
 
 
