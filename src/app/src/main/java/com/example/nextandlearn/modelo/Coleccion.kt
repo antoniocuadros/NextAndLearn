@@ -12,9 +12,9 @@ import androidx.room.PrimaryKey
         - imagen: Imagen asociada a la colección, de tipo String.
  */
 @Entity(tableName = "Colecciones")
-data class Coleccion(@PrimaryKey val nombre_coleccion:String,
+data class Coleccion(val nombre_coleccion:String,
                      val nivel:String,
-                     val identificador:String,
+                     @PrimaryKey val identificador:String,
                      val imagen:String)
 {
 }
