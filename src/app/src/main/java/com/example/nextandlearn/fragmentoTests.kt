@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 
 
-class fragmentoListaVocabulario : Fragment() {
-
+class fragmentoTests : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
     override fun onCreateView(
@@ -18,7 +18,7 @@ class fragmentoListaVocabulario : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragmento_lista_vocabulario, container, false)
+        return inflater.inflate(R.layout.fragment_fragmento_tests, container, false)
     }
 
 }
