@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.NavArgs
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
@@ -42,13 +43,25 @@ class fragmentoCartasPalabras : Fragment() {
         palabras = db.palabraDao.obtenerPalabraSegunColeccion(argumentos.coleccion)
 
         //Definimos el adapter y le pasamos las palabras
-        slider_palabras.adapter = ListaVocabularioAdapter(palabras, requireContext())
+        //Adicionalmente definimos el clickListener
+        slider_palabras.adapter = ListaVocabularioAdapter(palabras, requireContext()){palabra:Palabra, vista:View ->
+            Toast.makeText(context,palabra.ingles,Toast.LENGTH_SHORT).show()
+        }
         slider_palabras.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
         indicador_slider.setViewPager(slider_palabras)
 
+        slider_palabras.setOnClickListener {
+            Toast.makeText(context, "Clicked", Toast.LENGTH_LONG).show()
+        }
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
     }
 
 }
