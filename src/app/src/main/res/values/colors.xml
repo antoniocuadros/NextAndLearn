@@ -10,4 +10,5 @@
     <color name="azul_menu">#4C036E</color>
     <color name="azul_claro">#B165D4</color>
     <color name="azul_selected">#FFFFFFFF</color>
+    <color name="morado_pastel">#E0BBE4</color>
 </resources>

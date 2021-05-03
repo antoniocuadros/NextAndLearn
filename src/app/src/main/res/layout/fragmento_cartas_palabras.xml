@@ -6,23 +6,25 @@
     tools:context=".fragmentos.fragmentoCartasPalabras"
     android:orientation="vertical"
     android:background="@color/azul_claro"
+    android:layout_gravity="center"
+    android:gravity="center"
     >
 
     <androidx.viewpager2.widget.ViewPager2
-        android:layout_width="320dp"
-        android:layout_height="200dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
-
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:id="@+id/slider_palabras_ly"
         android:layout_gravity="center"
         />
 
     <me.relex.circleindicator.CircleIndicator3
-        android:layout_width="260dp"
+        android:layout_width="match_parent"
         android:gravity="center"
         android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_gravity="center_vertical|center_horizontal"
         android:id="@+id/indicador_slider"
         android:background="@color/azul_claro"

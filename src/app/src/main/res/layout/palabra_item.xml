@@ -6,6 +6,7 @@
     android:layout_margin="10dp"
     app:cardCornerRadius="30dp"
     app:cardElevation="5dp"
+    android:backgroundTint="@color/morado_pastel"
     >
 
     <LinearLayout
@@ -34,11 +35,11 @@
             android:id="@+id/palabra_espanol"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="3dp"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/black"
-            android:textSize="15dp"
+            android:textSize="20dp"
             android:textStyle="bold"
             android:text="Abuela"
             android:layout_marginLeft="10dp"

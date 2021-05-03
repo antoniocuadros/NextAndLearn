@@ -38,7 +38,7 @@ class fragmentoListaVocabulario : Fragment() {
         //seteamos el click listener de las cartas que aparecen
         cuadricula_coleccionVocabulario.setOnItemClickListener { cuadricula_coleccionVocabulario, _, position, _ ->
             var coleccion:Coleccion = cuadricula_coleccionVocabulario.getItemAtPosition(position) as Coleccion
-            
+
             (activity as MainActivity).onColeccionSelected(coleccion.identificador)
         }
 
