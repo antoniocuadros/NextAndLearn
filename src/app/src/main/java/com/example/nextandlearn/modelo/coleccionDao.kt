@@ -42,7 +42,7 @@ interface coleccionDao {
     como una lista de objetos Coleccion.
      */
     @Query("SELECT * FROM Colecciones")
-    fun obtenerTodasPalabras():MutableList<Coleccion>
+    fun obtenerTodasColecciones():MutableList<Coleccion>
 
     /*
     Este método nos permite obtener una determinada coleccion dado su identificador

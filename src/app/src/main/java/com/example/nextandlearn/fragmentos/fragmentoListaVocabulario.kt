@@ -5,10 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridView
 import com.example.nextandlearn.R
+import com.example.nextandlearn.fragmentos.adapters.ColeccionAdapter
+import com.example.nextandlearn.modelo.Coleccion
+import com.example.nextandlearn.modelo.VocabularioDataBase
+import com.example.nextandlearn.modelo.obtenerBaseDatos
 
 
 class fragmentoListaVocabulario : Fragment() {
+    private lateinit var adapter:ColeccionAdapter
+    private lateinit var colecciones:MutableList<Coleccion>
+    private lateinit var cuadricula_coleccionVocabulario: GridView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +27,21 @@ class fragmentoListaVocabulario : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragmento_lista_vocabulario, container, false)
+        val view =  inflater.inflate(R.layout.fragmento_lista_vocabulario, container, false)
+
+        //Inicializamos el gridView definiendo el adapter
+        inicializaListaColecciones(view)
+
+        return view
+    }
+
+    private fun inicializaListaColecciones(view:View){
+        cuadricula_coleccionVocabulario = view.findViewById<GridView>(R.id.cuadricula_leyendas)
+        val db:VocabularioDataBase = obtenerBaseDatos(requireContext())
+        colecciones = db.coleccionDao.obtenerTodasColecciones()
+
+        adapter = ColeccionAdapter(colecciones, requireContext())
+        cuadricula_coleccionVocabulario.adapter = adapter
     }
 
 }
