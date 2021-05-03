@@ -25,11 +25,11 @@ class ColeccionAdapter(var listaColeccion:MutableList<Coleccion>, context: Conte
 
         Para ello se siguen los siguientes pasos:
         -> 1) Se obtiene la vista.
-        -> 2) Se obtiene de la lista de leyendas la que corresponde a la posición que se va a construir
+        -> 2) Se obtiene de la lista de colecciones la que corresponde a la posición que se va a construir
               obteniendo la posición como un parámetro.
         -> 3) Se definen variables que referiencian los elementos (views) que forman un item (carta)
-              de la lista de leyendas.
-        -> 4) Se asignan los valores de la leyenda que va en esa posición a las vistas obtenidas en
+              de la lista de colecciones.
+        -> 4) Se asignan los valores de la colección que va en esa posición a las vistas obtenidas en
               el paso anterior.
         -> 5) Se devuelve la vista
      */
@@ -59,7 +59,7 @@ class ColeccionAdapter(var listaColeccion:MutableList<Coleccion>, context: Conte
 
     /*
     Para una determinada posición dada como argumento se devuelve
-    la leyenda asociada a dicha posición de la lista de leyendas.
+    la colección asociada a dicha posición de la lista de colecciones.
      */
     override fun getItem(position: Int): Any {
         return listaColeccion[position]
@@ -74,7 +74,7 @@ class ColeccionAdapter(var listaColeccion:MutableList<Coleccion>, context: Conte
     }
 
     /*
-    Este método devuelve la longitud de la lista de leyendas.
+    Este método devuelve la longitud de la lista de colecciones.
      */
     override fun getCount(): Int {
         return listaColeccion.size
