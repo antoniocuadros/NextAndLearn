@@ -9,10 +9,25 @@
         android:id="@+id/listaVocabulario"
         android:name="com.example.nextandlearn.fragmentos.fragmentoListaVocabulario"
         android:label="fragment_fragmento_lista_vocabulario"
-        tools:layout="@layout/fragmento_lista_vocabulario" />
+        tools:layout="@layout/fragmento_lista_vocabulario" >
+        <action
+            android:id="@+id/action_listaVocabulario_to_fragmentoCartasPalabras"
+            app:destination="@id/fragmentoCartasPalabras" />
+    </fragment>
     <fragment
         android:id="@+id/tests"
         android:name="com.example.nextandlearn.fragmentos.fragmentoTests"
         android:label="fragment_fragmento_tests"
         tools:layout="@layout/fragmento_tests" />
+    <fragment
+        android:id="@+id/fragmentoCartasPalabras"
+        android:name="com.example.nextandlearn.fragmentos.fragmentoCartasPalabras"
+        android:label="fragmento_cartas_palabras"
+        tools:layout="@layout/fragmento_cartas_palabras" >
+        <argument
+            android:name="coleccion"
+            app:argType="string"
+            android:defaultValue=""
+            />
+    </fragment>
 </navigation>

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.nextandlearn.fragmentos.fragmentoListaVocabularioDirections
 import com.example.nextandlearn.modelo.VocabularioDataBase
 import com.example.nextandlearn.modelo.obtenerBaseDatos
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         estableceControlNavegacion()
 
         //obtenemos el objeto db
-        obtener_db()
+        //obtener_db()
     }
 
     /*
@@ -37,6 +38,11 @@ class MainActivity : AppCompatActivity() {
         Esta función se encarga de obtener la base de datos
      */
     private fun obtener_db(){
-        var db = obtenerBaseDatos(applicationContext)
+        obtenerBaseDatos(applicationContext)
+    }
+
+    //De lista leyendas a detalles
+    fun onColeccionSelected(coleccion: String) {
+        findNavController(R.id.fragment2).navigate(fragmentoListaVocabularioDirections.actionListaVocabularioToFragmentoCartasPalabras(coleccion))
     }
 }

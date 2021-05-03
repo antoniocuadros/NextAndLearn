@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragmentos.fragmentoCartasPalabras">
+    tools:context=".fragmentos.fragmentoCartasPalabras"
+    android:orientation="vertical"
+    android:background="@color/azul_claro"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_width="320dp"
+        android:layout_height="200dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
 
-</FrameLayout>
+        android:id="@+id/slider_palabras_ly"
+        android:layout_gravity="center"
+        />
+
+    <me.relex.circleindicator.CircleIndicator3
+        android:layout_width="260dp"
+        android:gravity="center"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:id="@+id/indicador_slider"
+        android:background="@color/azul_claro"
+        />
+</LinearLayout>
