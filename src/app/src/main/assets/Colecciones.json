@@ -1,0 +1,44 @@
+[
+  {
+    "nombre_coleccion": "My body",
+    "nivel": "Pre A1 Starters",
+    "identificador": "my_body",
+    "imagen": "body",
+    "completada": "false"
+  },
+  {
+    "nombre_coleccion": "At the Zoo",
+    "nivel": "Pre A1 Starters",
+    "identificador": "at_the_zoo",
+    "imagen": "zoo",
+    "completada": "false"
+  },
+  {
+    "nombre_coleccion": "At the clothes shop",
+    "nivel": "Pre A1 Starters",
+    "identificador": "at_the_clothes_shop",
+    "imagen": "clothes",
+    "completada": "false"
+  },
+  {
+    "nombre_coleccion": "My friend’s birthday",
+    "nivel": "Pre A1 Starters",
+    "identificador": "my_friends_birthday",
+    "imagen": "birthday",
+    "completada": "false"
+  },
+  {
+    "nombre_coleccion": "My favourite food",
+    "nivel": "Pre A1 Starters",
+    "identificador": "my_favorite_food",
+    "imagen": "food",
+    "completada": "false"
+  },
+  {
+    "nombre_coleccion": "At home",
+    "nivel": "Pre A1 Starters",
+    "identificador": "at_home",
+    "imagen": "home",
+    "completada": "false"
+  }
+]

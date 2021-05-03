@@ -1,0 +1,661 @@
+[
+  {
+    "espanol": "brazo",
+    "ingles": "arm",
+    "imagen": "brazo",
+    "coleccion": "my_body",
+    "marcada": "false"
+  },
+  {
+    "espanol": "mano",
+    "ingles": "hand",
+    "imagen": "mano",
+    "coleccion": "my_body",
+    "marcada": "false"
+  },
+  {
+    "espanol": "cuerpo",
+    "ingles": "body",
+    "imagen": "cuerpo",
+    "coleccion": "my_body",
+    "marcada": "false"
+  },
+  {
+    "espanol": "pie",
+    "ingles": "foot",
+    "imagen": "pie",
+    "coleccion": "my_body",
+    "marcada": "false"
+  },
+  {
+    "espanol": "cabeza",
+    "ingles": "head",
+    "imagen": "cabeza",
+    "coleccion": "my_body",
+    "marcada": "false"
+  },
+  {
+    "espanol": "cabello",
+    "ingles": "hair",
+    "imagen": "cabello",
+    "coleccion": "my_body",
+    "marcada": "false"
+  },
+  {
+    "espanol": "cara",
+    "ingles": "face",
+    "imagen": "cara",
+    "coleccion": "my_body",
+    "marcada": "false"
+  },
+  {
+    "espanol": "ojo",
+    "ingles": "eye",
+    "imagen": "ojo",
+    "coleccion": "my_body",
+    "marcada": "false"
+  },
+  {
+    "espanol": "oído",
+    "ingles": "ear",
+    "imagen": "oido",
+    "coleccion": "my_body",
+    "marcada": "false"
+  },
+  {
+    "espanol": "boca",
+    "ingles": "mouth",
+    "imagen": "boca",
+    "coleccion": "my_body",
+    "marcada": "false"
+  },
+  {
+    "espanol": "nariz",
+    "ingles": "nose",
+    "imagen": "nariz",
+    "coleccion": "my_body",
+    "marcada": "false"
+  },
+  {
+    "espanol": "vaca",
+    "ingles": "cow",
+    "imagen": "vaca",
+    "coleccion": "at_the_zoo",
+    "marcada": "false"
+  },
+  {
+    "espanol": "rana",
+    "ingles": "frog",
+    "imagen": "rana",
+    "coleccion": "at_the_zoo",
+    "marcada": "false"
+  },
+  {
+    "espanol": "gallina",
+    "ingles": "chicken",
+    "imagen": "gallina",
+    "coleccion": "at_the_zoo",
+    "marcada": "false"
+  },
+  {
+    "espanol": "caballo",
+    "ingles": "horse",
+    "imagen": "caballo",
+    "coleccion": "at_the_zoo",
+    "marcada": "false"
+  },
+  {
+    "espanol": "pájaro",
+    "ingles": "bird",
+    "imagen": "pajaro",
+    "coleccion": "at_the_zoo",
+    "marcada": "false"
+  },
+  {
+    "espanol": "tigre",
+    "ingles": "tiger",
+    "imagen": "tigre",
+    "coleccion": "at_the_zoo",
+    "marcada": "false"
+  },
+  {
+    "espanol": "oveja",
+    "ingles": "sheep",
+    "imagen": "oveja",
+    "coleccion": "at_the_zoo",
+    "marcada": "false"
+  },
+  {
+    "espanol": "ratón",
+    "ingles": "mouse",
+    "imagen": "raton",
+    "coleccion": "at_the_zoo",
+    "marcada": "false"
+  },
+  {
+    "espanol": "pato",
+    "ingles": "duck",
+    "imagen": "pato",
+    "coleccion": "at_the_zoo",
+    "marcada": "false"
+  },
+  {
+    "espanol": "mono",
+    "ingles": "monkey",
+    "imagen": "mono",
+    "coleccion": "at_the_zoo",
+    "marcada": "false"
+  },
+  {
+    "espanol": "cabra",
+    "ingles": "goat",
+    "imagen": "cabra",
+    "coleccion": "at_the_zoo",
+    "marcada": "false"
+  },
+  {
+    "espanol": "perro",
+    "ingles": "dog",
+    "imagen": "perro",
+    "coleccion": "at_the_zoo",
+    "marcada": "false"
+  },
+  {
+    "espanol": "cocodrilo",
+    "ingles": "crocodile",
+    "imagen": "cocodrilo",
+    "coleccion": "at_the_zoo",
+    "marcada": "false"
+  },
+  {
+    "espanol": "elefante",
+    "ingles": "elephant",
+    "imagen": "elefante",
+    "coleccion": "at_the_zoo",
+    "marcada": "false"
+  },
+  {
+    "espanol": "gafas",
+    "ingles": "glasses",
+    "imagen": "gafas",
+    "coleccion": "at_the_clothes_shop",
+    "marcada": "false"
+  },
+  {
+    "espanol": "sombrero",
+    "ingles": "hat",
+    "imagen": "sombrero",
+    "coleccion": "at_the_clothes_shop",
+    "marcada": "false"
+  },
+  {
+    "espanol": "bolsa",
+    "ingles": "bag",
+    "imagen": "bolsa",
+    "coleccion": "at_the_clothes_shop",
+    "marcada": "false"
+  },
+  {
+    "espanol": "chaqueta",
+    "ingles": "jacket",
+    "imagen": "chaqueta",
+    "coleccion": "at_the_clothes_shop",
+    "marcada": "false"
+  },
+  {
+    "espanol": "bolso",
+    "ingles": "handbag",
+    "imagen": "bolso",
+    "coleccion": "at_the_clothes_shop",
+    "marcada": "false"
+  },
+  {
+    "espanol": "calcetín",
+    "ingles": "sock",
+    "imagen": "calcetin",
+    "coleccion": "at_the_clothes_shop",
+    "marcada": "false"
+  },
+  {
+    "espanol": "zapato",
+    "ingles": "shoe",
+    "imagen": "zapato",
+    "coleccion": "at_the_clothes_shop",
+    "marcada": "false"
+  },
+  {
+    "espanol": "falda",
+    "ingles": "skirt",
+    "imagen": "falda",
+    "coleccion": "at_the_clothes_shop",
+    "marcada": "false"
+  },
+  {
+    "espanol": "reloj",
+    "ingles": "watch",
+    "imagen": "reloj",
+    "coleccion": "at_the_clothes_shop",
+    "marcada": "false"
+  },
+  {
+    "espanol": "pantalones",
+    "ingles": "trousers",
+    "imagen": "pantalones",
+    "coleccion": "at_the_clothes_shop",
+    "marcada": "false"
+  },
+  {
+    "espanol": "camisa",
+    "ingles": "shirt",
+    "imagen": "camisa",
+    "coleccion": "at_the_clothes_shop",
+    "marcada": "false"
+  },
+  {
+    "espanol": "camiseta de manga corta",
+    "ingles": "T-shirt",
+    "imagen": "camiseta",
+    "coleccion": "at_the_clothes_shop",
+    "marcada": "false"
+  },
+  {
+    "espanol": "vestido",
+    "ingles": "dress",
+    "imagen": "vestido",
+    "coleccion": "at_the_clothes_shop",
+    "marcada": "false"
+  },
+  {
+    "espanol": "hombre",
+    "ingles": "man",
+    "imagen": "hombre",
+    "coleccion": "my_friends_birthday",
+    "marcada": "false"
+  },
+  {
+    "espanol": "hombres",
+    "ingles": "men",
+    "imagen": "hombres",
+    "coleccion": "my_friends_birthday",
+    "marcada": "false"
+  },
+  {
+    "espanol": "personas",
+    "ingles": "people",
+    "imagen": "personas",
+    "coleccion": "my_friends_birthday",
+    "marcada": "false"
+  },
+  {
+    "espanol": "mujer",
+    "ingles": "woman",
+    "imagen": "mujer",
+    "coleccion": "my_friends_birthday",
+    "marcada": "false"
+  },
+  {
+    "espanol": "mujeres",
+    "ingles": "women",
+    "imagen": "mujeres",
+    "coleccion": "my_friends_birthday",
+    "marcada": "false"
+  },
+  {
+    "espanol": "niño",
+    "ingles": "child",
+    "imagen": "niño",
+    "coleccion": "my_friends_birthday",
+    "marcada": "false"
+  },
+  {
+    "espanol": "niños",
+    "ingles": "children",
+    "imagen": "niños",
+    "coleccion": "my_friends_birthday",
+    "marcada": "false"
+  },
+  {
+    "espanol": "chico",
+    "ingles": "boy",
+    "imagen": "chico",
+    "coleccion": "my_friends_birthday",
+    "marcada": "false"
+  },
+  {
+    "espanol": "chica",
+    "ingles": "girl",
+    "imagen": "chica",
+    "coleccion": "my_friends_birthday",
+    "marcada": "false"
+  },
+  {
+    "espanol": "persona",
+    "ingles": "person",
+    "imagen": "persona",
+    "coleccion": "my_friends_birthday",
+    "marcada": "false"
+  },
+  {
+    "espanol": "extraterrestre",
+    "ingles": "alien",
+    "imagen": "extraterrestre",
+    "coleccion": "my_friends_birthday",
+    "marcada": "false"
+  },
+  {
+    "espanol": "monstruo",
+    "ingles": "monster",
+    "imagen": "monstruo",
+    "coleccion": "my_friends_birthday",
+    "marcada": "false"
+  },
+  {
+    "espanol": "robot",
+    "ingles": "robot",
+    "imagen": "robot",
+    "coleccion": "my_friends_birthday",
+    "marcada": "false"
+  },
+  {
+    "espanol": "papá/padre",
+    "ingles": "dad/father",
+    "imagen": "padre",
+    "coleccion": "my_friends_birthday",
+    "marcada": "false"
+  },
+  {
+    "espanol": "mamá/madre",
+    "ingles": "mum/mother",
+    "imagen": "madre",
+    "coleccion": "my_friends_birthday",
+    "marcada": "false"
+  },
+  {
+    "espanol": "hermana",
+    "ingles": "sister",
+    "imagen": "hermana",
+    "coleccion": "my_friends_birthday",
+    "marcada": "false"
+  },
+  {
+    "espanol": "hermano",
+    "ingles": "brother",
+    "imagen": "hermano",
+    "coleccion": "my_friends_birthday",
+    "marcada": "false"
+  },
+  {
+    "espanol": "abuela",
+    "ingles": "grandmother",
+    "imagen": "abuela",
+    "coleccion": "my_friends_birthday",
+    "marcada": "false"
+  },
+  {
+    "espanol": "abuelo",
+    "ingles": "grandfather",
+    "imagen": "abuelo",
+    "coleccion": "my_friends_birthday",
+    "marcada": "false"
+  },
+  {
+    "espanol": "patata",
+    "ingles": "potato",
+    "imagen": "patata",
+    "coleccion": "my_favorite_food",
+    "marcada": "false"
+  },
+  {
+    "espanol": "carne",
+    "ingles": "meat",
+    "imagen": "carne",
+    "coleccion": "my_favorite_food",
+    "marcada": "false"
+  },
+  {
+    "espanol": "pescado",
+    "ingles": "fish",
+    "imagen": "pescado",
+    "coleccion": "my_favorite_food",
+    "marcada": "false"
+  },
+  {
+    "espanol": "agua",
+    "ingles": "water",
+    "imagen": "agua",
+    "coleccion": "my_favorite_food",
+    "marcada": "false"
+  },
+  {
+    "espanol": "piña",
+    "ingles": "pineapple",
+    "imagen": "piña",
+    "coleccion": "my_favorite_food",
+    "marcada": "false"
+  },
+  {
+    "espanol": "mango",
+    "ingles": "mango",
+    "imagen": "mango",
+    "coleccion": "my_favorite_food",
+    "marcada": "false"
+  },
+  {
+    "espanol": "lima",
+    "ingles": "lime",
+    "imagen": "lima",
+    "coleccion": "my_favorite_food",
+    "marcada": "false"
+  },
+  {
+    "espanol": "limón",
+    "ingles": "lemon",
+    "imagen": "limon",
+    "coleccion": "my_favorite_food",
+    "marcada": "false"
+  },
+  {
+    "espanol": "pera",
+    "ingles": "pear",
+    "imagen": "pera",
+    "coleccion": "my_favorite_food",
+    "marcada": "false"
+  },
+  {
+    "espanol": "arroz",
+    "ingles": "rice",
+    "imagen": "arroz",
+    "coleccion": "my_favorite_food",
+    "marcada": "false"
+  },
+  {
+    "espanol": "naranja",
+    "ingles": "orange",
+    "imagen": "naranja",
+    "coleccion": "my_favorite_food",
+    "marcada": "false"
+  },
+  {
+    "espanol": "uvas",
+    "ingles": "grapes",
+    "imagen": "uvas",
+    "coleccion": "my_favorite_food",
+    "marcada": "false"
+  },
+  {
+    "espanol": "plátano",
+    "ingles": "banana",
+    "imagen": "platano",
+    "coleccion": "my_favorite_food",
+    "marcada": "false"
+  },
+  {
+    "espanol": "manzana",
+    "ingles": "apple",
+    "imagen": "manzana",
+    "coleccion": "my_favorite_food",
+    "marcada": "false"
+  },
+  {
+    "espanol": "guisantes",
+    "ingles": "peas",
+    "imagen": "guisantes",
+    "coleccion": "my_favorite_food",
+    "marcada": "false"
+  },
+  {
+    "espanol": "pan",
+    "ingles": "bread",
+    "imagen": "pan",
+    "coleccion": "my_favorite_food",
+    "marcada": "false"
+  },  {
+  "espanol": "cebolla",
+  "ingles": "onion",
+  "imagen": "cebolla",
+  "coleccion": "my_favorite_food",
+  "marcada": "false"
+},
+  {
+    "espanol": "tomate",
+    "ingles": "tomato",
+    "imagen": "tomate",
+    "coleccion": "my_favorite_food",
+    "marcada": "false"
+  },  {
+  "espanol": "leche",
+  "ingles": "milk",
+  "imagen": "leche",
+  "coleccion": "my_favorite_food",
+  "marcada": "false"
+},  {
+  "espanol": "cena",
+  "ingles": "dinner",
+  "imagen": "cena",
+  "coleccion": "my_favorite_food",
+  "marcada": "false"
+},  {
+  "espanol": "desayuno",
+  "ingles": "breakfast",
+  "imagen": "desayuno",
+  "coleccion": "my_favorite_food",
+  "marcada": "false"
+},  {
+  "espanol": "comida",
+  "ingles": "meal",
+  "imagen": "comida",
+  "coleccion": "my_favorite_food",
+  "marcada": "false"
+},  {
+  "espanol": "cocina",
+  "ingles": "kitchen",
+  "imagen": "cocina",
+  "coleccion": "at_home",
+  "marcada": "false"
+},{
+  "espanol": "alacena",
+  "ingles": "cupboard",
+  "imagen": "alacena",
+  "coleccion": "at_home",
+  "marcada": "false"
+},{
+  "espanol": "reloj",
+  "ingles": "clock",
+  "imagen": "reloj",
+  "coleccion": "at_home",
+  "marcada": "false"
+},{
+  "espanol": "caja",
+  "ingles": "box",
+  "imagen": "caja",
+  "coleccion": "at_home",
+  "marcada": "false"
+},{
+  "espanol": "dormitorio",
+  "ingles": "bedroom",
+  "imagen": "dormitorio",
+  "coleccion": "at_home",
+  "marcada": "false"
+},{
+  "espanol": "estantería",
+  "ingles": "bookcase",
+  "imagen": "estanteria",
+  "coleccion": "at_home",
+  "marcada": "false"
+},{
+  "espanol": "muñeca",
+  "ingles": "doll",
+  "imagen": "muñeca",
+  "coleccion": "at_home",
+  "marcada": "false"
+},{
+  "espanol": "baño",
+  "ingles": "bathroom",
+  "imagen": "baño",
+  "coleccion": "at_home",
+  "marcada": "false"
+},{
+  "espanol": "bañera",
+  "ingles": "bath",
+  "imagen": "bañera",
+  "coleccion": "at_home",
+  "marcada": "false"
+},{
+  "espanol": "espejo",
+  "ingles": "mirror",
+  "imagen": "espejo",
+  "coleccion": "at_home",
+  "marcada": "false"
+},{
+  "espanol": "comedor",
+  "ingles": "dining room",
+  "imagen": "comedor",
+  "coleccion": "at_home",
+  "marcada": "false"
+},{
+  "espanol": "ventana",
+  "ingles": "window",
+  "imagen": "ventana",
+  "coleccion": "at_home",
+  "marcada": "false"
+},{
+  "espanol": "cuadro",
+  "ingles": "picture",
+  "imagen": "cuadro",
+  "coleccion": "at_home",
+  "marcada": "false"
+},{
+  "espanol": "silla",
+  "ingles": "chair",
+  "imagen": "silla",
+  "coleccion": "at_home",
+  "marcada": "false"
+},{
+  "espanol": "mesa",
+  "ingles": "table",
+  "imagen": "mesa",
+  "coleccion": "at_home",
+  "marcada": "false"
+},
+  {
+    "espanol": "",
+    "ingles": "",
+    "imagen": "",
+    "coleccion": "at_home",
+    "marcada": "false"
+  },
+  {
+    "espanol": "casa",
+    "ingles": "house",
+    "imagen": "casa",
+    "coleccion": "at_home",
+    "marcada": "false"
+  },
+  {
+    "espanol": "piso",
+    "ingles": "flat",
+    "imagen": "piso",
+    "coleccion": "at_home",
+    "marcada": "false"
+  }
+]

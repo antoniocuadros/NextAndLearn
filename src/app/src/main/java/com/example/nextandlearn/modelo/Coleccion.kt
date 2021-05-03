@@ -10,11 +10,13 @@ import androidx.room.PrimaryKey
         - nivel: Nivel recomendado para aprender la colección, de tipo String.
         - identificador: Identificador de la colección, de tipo String.
         - imagen: Imagen asociada a la colección, de tipo String.
+        - completada: Indica si la colección ha sido o no completada, de tipo Boolean.
  */
 @Entity(tableName = "Colecciones")
 data class Coleccion(val nombre_coleccion:String,
                      val nivel:String,
                      @PrimaryKey val identificador:String,
-                     val imagen:String)
+                     val imagen:String,
+                     val completada:Boolean)
 {
 }
