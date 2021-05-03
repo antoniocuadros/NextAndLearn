@@ -1,6 +1,7 @@
 package com.example.nextandlearn.fragmentos.adapters
 
 import android.content.Context
+import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +19,8 @@ class ListaVocabularioAdapter(var palabras:MutableList<Palabra>,context: Context
     inner class Pager2ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val  imagen = itemView.findViewById<ImageView>(R.id.imagen_palabra)
         val espanol = itemView.findViewById<TextView>(R.id.palabra_espanol)
+        val boton = itemView.findViewById<Button>(R.id.boton_anadir)
+
         val db:VocabularioDataBase = obtenerBaseDatos(context)
         //Para poder hacer click en los elementos
         init{
@@ -26,10 +29,10 @@ class ListaVocabularioAdapter(var palabras:MutableList<Palabra>,context: Context
             }
 
             //Listener del botón que añade a la lista de palabras a recordar
-            itemView.rootView.findViewById<Button>(R.id.boton_anadir).setOnClickListener{
+            boton.setOnClickListener{
                 var palabra = palabras[adapterPosition]
-                palabra.marcada = true
                 Toast.makeText(context, palabra.espanol, Toast.LENGTH_SHORT).show()
+                palabra.marcada = true
                 db.palabraDao.actualizaPalabra(palabra)
             }
         }
@@ -48,6 +51,10 @@ class ListaVocabularioAdapter(var palabras:MutableList<Palabra>,context: Context
         var identificador_imagen = context.resources.getIdentifier(palabras[position].imagen, "drawable", "com.example.nextandlearn")
         holder.imagen.setImageResource(identificador_imagen)
         holder.espanol.text = palabras[position].espanol.capitalize()
+
+        if(palabras[position].marcada == true){
+            holder.boton.visibility = View.GONE
+        }
     }
 
 }

@@ -1,11 +1,13 @@
 package com.example.nextandlearn.modelo
 
 import android.content.Context
+import android.widget.Toast
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.io.File
 import java.io.InputStream
 
 /*
@@ -37,7 +39,7 @@ public fun obtenerBaseDatos(context: Context):VocabularioDataBase{
     if(!::instancia_data_base.isInitialized){
         instancia_data_base = Room.databaseBuilder(context.applicationContext,
             VocabularioDataBase::class.java, "vocabulario_db").allowMainThreadQueries().build()
-
+        
         //Leemos los datos de los JSON
         var vocabulario:MutableList<Palabra>
         var coleccion:MutableList<Coleccion>
