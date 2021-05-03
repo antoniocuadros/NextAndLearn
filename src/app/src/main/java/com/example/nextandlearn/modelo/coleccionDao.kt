@@ -49,4 +49,10 @@ interface coleccionDao {
      */
     @Query("SELECT * FROM Colecciones WHERE identificador= :buscar")
     fun obtenerColeccionSegunIdentificador(buscar:String):MutableList<Coleccion>
+
+    /*
+    Este método nos permite obtener el número de colecciones de nuestra base de datos
+     */
+    @Query("SELECT count(*) FROM  Colecciones")
+    fun obtenerNumeroColecciones()
 }

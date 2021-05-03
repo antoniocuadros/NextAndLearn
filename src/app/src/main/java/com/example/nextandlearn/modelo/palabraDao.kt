@@ -61,4 +61,6 @@ interface palabraDao {
      */
     @Query("SELECT * FROM Palabras WHERE coleccion= :buscar")
     fun obtenerPalabraSegunColeccion(buscar:String):MutableList<Palabra>
+
+    
 }
