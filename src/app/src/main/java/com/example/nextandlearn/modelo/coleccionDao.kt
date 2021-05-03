@@ -23,7 +23,7 @@ interface coleccionDao {
     datos.
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertaListaPalabras(listaColecciones:MutableList<Coleccion>)
+    fun insertaListaColeccion(listaColecciones:MutableList<Coleccion>)
 
     /*
     Este método nos permite dada una Coleccion, actualizarla en la base de datos.
@@ -49,10 +49,4 @@ interface coleccionDao {
      */
     @Query("SELECT * FROM Colecciones WHERE identificador= :buscar")
     fun obtenerColeccionSegunIdentificador(buscar:String):MutableList<Coleccion>
-
-    /*
-    Este método nos permite obtener el número de colecciones de nuestra base de datos
-     */
-    @Query("SELECT count(*) FROM  Colecciones")
-    fun obtenerNumeroColecciones()
 }

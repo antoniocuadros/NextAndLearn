@@ -4,9 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.nextandlearn.modelo.VocabularioDataBase
+import com.example.nextandlearn.modelo.obtenerBaseDatos
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var db:VocabularioDataBase
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -14,7 +18,8 @@ class MainActivity : AppCompatActivity() {
         //Establecemos el controlador del menu inferior
         estableceControlNavegacion()
 
-
+        //obtenemos el objeto db
+        obtener_db()
     }
 
     /*
@@ -26,5 +31,12 @@ class MainActivity : AppCompatActivity() {
         val menu_inferior = findViewById<BottomNavigationView>(R.id.menu_inferior)
         val controlador_navegacion = findNavController(R.id.fragment2)
         menu_inferior.setupWithNavController(controlador_navegacion)
+    }
+
+    /*
+        Esta función se encarga de obtener la base de datos
+     */
+    private fun obtener_db(){
+        var db = obtenerBaseDatos(applicationContext)
     }
 }
