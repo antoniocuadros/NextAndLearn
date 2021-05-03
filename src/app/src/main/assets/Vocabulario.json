@@ -303,14 +303,14 @@
   {
     "espanol": "niño",
     "ingles": "child",
-    "imagen": "niño",
+    "imagen": "nino",
     "coleccion": "my_friends_birthday",
     "marcada": "false"
   },
   {
     "espanol": "niños",
     "ingles": "children",
-    "imagen": "niños",
+    "imagen": "ninos",
     "coleccion": "my_friends_birthday",
     "marcada": "false"
   },
@@ -429,7 +429,7 @@
   {
     "espanol": "piña",
     "ingles": "pineapple",
-    "imagen": "piña",
+    "imagen": "pina",
     "coleccion": "my_favorite_food",
     "marcada": "false"
   },
@@ -585,19 +585,19 @@
 },{
   "espanol": "muñeca",
   "ingles": "doll",
-  "imagen": "muñeca",
+  "imagen": "muneca",
   "coleccion": "at_home",
   "marcada": "false"
 },{
   "espanol": "baño",
   "ingles": "bathroom",
-  "imagen": "baño",
+  "imagen": "bano",
   "coleccion": "at_home",
   "marcada": "false"
 },{
   "espanol": "bañera",
   "ingles": "bath",
-  "imagen": "bañera",
+  "imagen": "banera",
   "coleccion": "at_home",
   "marcada": "false"
 },{
@@ -637,13 +637,6 @@
   "coleccion": "at_home",
   "marcada": "false"
 },
-  {
-    "espanol": "",
-    "ingles": "",
-    "imagen": "",
-    "coleccion": "at_home",
-    "marcada": "false"
-  },
   {
     "espanol": "casa",
     "ingles": "house",
