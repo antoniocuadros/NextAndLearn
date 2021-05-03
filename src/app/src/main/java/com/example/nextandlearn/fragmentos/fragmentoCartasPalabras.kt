@@ -1,11 +1,15 @@
 package com.example.nextandlearn.fragmentos
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.navigation.NavArgs
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
@@ -45,8 +49,21 @@ class fragmentoCartasPalabras : Fragment() {
         //Definimos el adapter y le pasamos las palabras
         //Adicionalmente definimos el clickListener
         slider_palabras.adapter = ListaVocabularioAdapter(palabras, requireContext()){palabra:Palabra, vista:View ->
-            Toast.makeText(context,palabra.ingles,Toast.LENGTH_SHORT).show()
+            var palabra_espanol_vista =  vista.findViewById<TextView>(R.id.palabra_espanol)
+            var carta_vista = vista.findViewById<CardView>(R.id.carta_palabra)
+
+            //Estaba la palabra en inglés
+            if(palabra_espanol_vista.text == palabra.ingles.capitalize()){
+                palabra_espanol_vista.text = palabra.espanol.capitalize()
+            }
+            else{ //Estaba la palabra en español
+                palabra_espanol_vista.text = palabra.ingles.capitalize()
+            }
+
+
         }
+        
+
         slider_palabras.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
         indicador_slider.setViewPager(slider_palabras)

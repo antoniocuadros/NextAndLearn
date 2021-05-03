@@ -18,7 +18,7 @@ data class Palabra(val espanol:String,
                        @PrimaryKey val ingles: String,
                        val imagen:String,
                        val coleccion: String,
-                       val marcada: Boolean
+                       var marcada: Boolean
                    )
 {
 }
