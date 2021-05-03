@@ -10,12 +10,15 @@ import androidx.room.PrimaryKey
         - ingles: Misma palabra en su traducción al inglés, de tipo String.
         - imagen: Nombre de la imagen asociada a la palabra, de tipo String.
         - coleccion: Nombre de la colección de vocabulario a la que pertenece la palabra, de tipo String.
+        - marcada: Indica si una palabra ha sido marcada para su posterior repaso, de tipo Boolean
  */
 
 @Entity(tableName = "Palabras")
 data class Palabra(val espanol:String,
                        @PrimaryKey val ingles: String,
                        val imagen:String,
-                       val coleccion: String)
+                       val coleccion: String,
+                       val marcada: Boolean
+                   )
 {
 }
