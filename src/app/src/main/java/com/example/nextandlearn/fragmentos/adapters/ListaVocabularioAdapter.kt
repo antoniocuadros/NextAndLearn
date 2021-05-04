@@ -1,8 +1,8 @@
 package com.example.nextandlearn.fragmentos.adapters
 
 import android.content.Context
-import android.opengl.Visibility
 import android.speech.tts.TextToSpeech
+import android.speech.tts.TextToSpeech.OnInitListener
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,15 +16,17 @@ import org.w3c.dom.Text
 import java.util.*
 
 
-class ListaVocabularioAdapter(var palabras:MutableList<Palabra>,context: Context, val clickListener: (Palabra, View)-> Unit): RecyclerView.Adapter<ListaVocabularioAdapter.Pager2ViewHolder>() {
+class ListaVocabularioAdapter(var palabras: MutableList<Palabra>, context: Context, val clickListener: (Palabra, View) -> Unit): RecyclerView.Adapter<ListaVocabularioAdapter.Pager2ViewHolder>(), TextToSpeech.OnInitListener{
     private var context = context
+    var reproductor = TextToSpeech(context, this)
 
-    inner class Pager2ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    inner class Pager2ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val  imagen = itemView.findViewById<ImageView>(R.id.imagen_palabra)
         val espanol = itemView.findViewById<TextView>(R.id.palabra_espanol)
         val boton = itemView.findViewById<Button>(R.id.boton_anadir2)
         val boton_reproducir = itemView.findViewById<ImageButton>(R.id.boton_reproducir)
         val db:VocabularioDataBase = obtenerBaseDatos(context)
+
 
         //Para poder hacer click en los elementos
         init{
@@ -40,11 +42,15 @@ class ListaVocabularioAdapter(var palabras:MutableList<Palabra>,context: Context
                 boton.visibility = View.GONE
             }
 
+
+
             boton_reproducir.setOnClickListener {
                 var palabra = palabras[adapterPosition]
-                Toast.makeText(context, "asasa", Toast.LENGTH_SHORT).show()
+                reproductor.speak(palabra.ingles, TextToSpeech.QUEUE_FLUSH, null, null)
             }
         }
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListaVocabularioAdapter.Pager2ViewHolder {
@@ -71,5 +77,10 @@ class ListaVocabularioAdapter(var palabras:MutableList<Palabra>,context: Context
         super.onBindViewHolder(holder, position, payloads)
         holder.setIsRecyclable(false)
     }
-
+    
+    override fun onInit(status: Int) {
+        if(status == TextToSpeech.SUCCESS){
+            reproductor.language = Locale.UK
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.nextandlearn.fragmentos
 
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.example.nextandlearn.modelo.Coleccion
 import com.example.nextandlearn.modelo.Palabra
 import com.example.nextandlearn.modelo.VocabularioDataBase
 import com.example.nextandlearn.modelo.obtenerBaseDatos
+import java.util.*
 
 
 class fragmentoListaVocabulario : Fragment() {
