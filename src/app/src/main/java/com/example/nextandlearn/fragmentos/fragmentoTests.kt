@@ -14,12 +14,15 @@ import com.example.nextandlearn.R
 import com.example.nextandlearn.modelo.Palabra
 import com.example.nextandlearn.modelo.VocabularioDataBase
 import com.example.nextandlearn.modelo.obtenerBaseDatos
+import java.util.*
+import kotlin.random.Random
 
 
 class fragmentoTests : Fragment() {
     private lateinit var vocabulario:MutableList<Palabra>
     private lateinit var db:VocabularioDataBase
     private var pregunta = 0
+    private var numero_preguntas = 0
 
     private lateinit var enunciado:TextView
     private lateinit var imagen_opcion_1:ImageView
@@ -55,9 +58,48 @@ class fragmentoTests : Fragment() {
         //Obtenemos todas las palabras de la coleccion, se almacenan en la variable de clase
         obtener_palabras()
 
+        //Obtenemos las opciones
+        var opciones:MutableList<Palabra> = generaOpciones()
+
         return view
     }
 
+    /*
+        Esta función genera las opciones de la pregunta que se va a mostrar
+     */
+    private fun generaOpciones():MutableList<Palabra>{
+        //Obtenemos la palabra que va a ser preguntada
+        var palabra_pregunta = vocabulario[pregunta]
+
+        //Ahora 'aleatoriamente' cogemos tres palabras distintas a la anterior
+        //La estrategia para elegir las palabras de forma sencilla es coger
+        //a parte las tres siguientes palabras (de forma circular para no salirnos
+        //del array).
+        var a_coger = 3
+        var vector_opciones:MutableList<Palabra> = mutableListOf()
+
+        while(a_coger > 0){
+            vector_opciones.add(vocabulario[(pregunta + a_coger) % numero_preguntas])
+            a_coger--
+        }
+
+        //Anadimos la correcta
+        vector_opciones.add(palabra_pregunta)
+
+        //Deberíamos mezclar el vector para que la correcta no sea siempre la primera
+        var a_devolver:MutableList<Palabra> = mutableListOf()
+        for(i in 1..4){
+            var random = 0
+            if(vector_opciones.size > 0){
+                random = Random.nextInt(0,vector_opciones.size)
+            }
+            a_devolver.add(vector_opciones[random])
+            vector_opciones.removeAt(random)
+        }
+
+        //Devolvemos el vector mezclado
+        return a_devolver
+    }
 
     /*
         Con el identificador de la colección pasado por argumentos obtenemos de la base de datos
@@ -67,6 +109,7 @@ class fragmentoTests : Fragment() {
         var identificacion_coleccion = argumentos.coleccion
         db = obtenerBaseDatos(requireContext())
         vocabulario = db.palabraDao.obtenerPalabraSegunColeccion(identificacion_coleccion)
+        numero_preguntas = vocabulario.size
     }
 
     /*
