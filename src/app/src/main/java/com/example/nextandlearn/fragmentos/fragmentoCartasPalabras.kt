@@ -50,7 +50,6 @@ class fragmentoCartasPalabras : Fragment() {
         //Adicionalmente definimos el clickListener
         slider_palabras.adapter = ListaVocabularioAdapter(palabras, requireContext()){palabra:Palabra, vista:View ->
             var palabra_espanol_vista =  vista.findViewById<TextView>(R.id.palabra_espanol)
-            var carta_vista = vista.findViewById<CardView>(R.id.carta_palabra)
 
             //Estaba la palabra en inglés
             if(palabra_espanol_vista.text == palabra.ingles.capitalize()){
@@ -62,15 +61,9 @@ class fragmentoCartasPalabras : Fragment() {
 
 
         }
-        
-
         slider_palabras.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-
         indicador_slider.setViewPager(slider_palabras)
 
-        slider_palabras.setOnClickListener {
-            Toast.makeText(context, "Clicked", Toast.LENGTH_LONG).show()
-        }
 
         return view
     }
@@ -80,5 +73,6 @@ class fragmentoCartasPalabras : Fragment() {
 
 
     }
+
 
 }

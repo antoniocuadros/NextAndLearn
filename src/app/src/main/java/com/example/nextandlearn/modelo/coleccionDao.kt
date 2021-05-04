@@ -49,4 +49,7 @@ interface coleccionDao {
      */
     @Query("SELECT * FROM Colecciones WHERE identificador= :buscar")
     fun obtenerColeccionSegunIdentificador(buscar:String):MutableList<Coleccion>
+
+    @Query("SELECT count(*) FROM Colecciones")
+    fun obtenerNumColecciones():Int
 }
