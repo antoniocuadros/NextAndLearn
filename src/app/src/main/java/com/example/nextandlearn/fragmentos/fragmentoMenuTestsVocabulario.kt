@@ -32,7 +32,7 @@ class fragmentoMenuTestsVocabulario : Fragment() {
             var coleccion = argumentos.coleccion
             (activity as MainActivity).onVocabularioSelected(coleccion)
         }
-        
+
         return view
     }
 }
