@@ -8,7 +8,7 @@
         />
 
     <item
-        android:id="@+id/tests"
+        android:id="@+id/mi_baraja"
         android:icon="@drawable/tests_icono"
         android:title="@string/Tests"/>
 </menu>
