@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
@@ -50,13 +51,16 @@ class fragmentoCartasPalabras : Fragment() {
         //Adicionalmente definimos el clickListener
         slider_palabras.adapter = ListaVocabularioAdapter(palabras, requireContext()){palabra:Palabra, vista:View ->
             var palabra_espanol_vista =  vista.findViewById<TextView>(R.id.palabra_espanol)
+            var boton_reproducir_vista = vista.findViewById<ImageButton>(R.id.boton_reproducir)
 
             //Estaba la palabra en inglés
             if(palabra_espanol_vista.text == palabra.ingles.capitalize()){
                 palabra_espanol_vista.text = palabra.espanol.capitalize()
+                boton_reproducir_vista.visibility = View.GONE
             }
             else{ //Estaba la palabra en español
                 palabra_espanol_vista.text = palabra.ingles.capitalize()
+                boton_reproducir_vista.visibility = View.VISIBLE
             }
 
 

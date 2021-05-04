@@ -61,6 +61,18 @@
                 android:text="Añadir a Refuerzo"
                 android:layout_margin="10dp"
                 />
+            <ImageButton
+                android:id="@+id/boton_reproducir"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:src="@drawable/reproducir"
+                android:backgroundTint="@color/azul_claro"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:visibility="gone"
+                />
         </LinearLayout>
 
     </LinearLayout>

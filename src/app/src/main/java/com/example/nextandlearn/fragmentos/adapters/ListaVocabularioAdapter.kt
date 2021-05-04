@@ -20,6 +20,7 @@ class ListaVocabularioAdapter(var palabras:MutableList<Palabra>,context: Context
         val  imagen = itemView.findViewById<ImageView>(R.id.imagen_palabra)
         val espanol = itemView.findViewById<TextView>(R.id.palabra_espanol)
         val boton = itemView.findViewById<Button>(R.id.boton_anadir2)
+        val boton_reproducir = itemView.findViewById<ImageButton>(R.id.boton_reproducir)
 
         val db:VocabularioDataBase = obtenerBaseDatos(context)
         //Para poder hacer click en los elementos
