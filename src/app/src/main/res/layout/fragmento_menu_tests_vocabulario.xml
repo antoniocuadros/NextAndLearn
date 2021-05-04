@@ -3,12 +3,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragmentos.fragmentoMenuTestsVocabulario">
+    tools:context=".fragmentos.fragmentoMenuTestsVocabulario"
+    android:background="@color/azul_claro"
+    android:gravity="center"
+    android:orientation="horizontal"
+    >
+    <androidx.cardview.widget.CardView
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardCornerRadius="190dp"
+        app:cardElevation="50dp"
+        android:layout_margin="4dp"
+        android:id="@+id/carta_voc"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            >
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardCornerRadius="90dp"
+                android:id="@+id/boton_vocabulario"
+                android:layout_margin="5dp"
+                android:foregroundGravity="center"
+                >
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/imagen_boton_vocabulario"
+                    android:layout_width="match_parent"
+                    android:scaleType="centerCrop"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/vocabulario"
+                    />
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardCornerRadius="190dp"
+        app:cardElevation="50dp"
+        android:layout_margin="4dp"
+        android:id="@+id/carta_tests"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            >
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardCornerRadius="90dp"
+                android:id="@+id/boton_tests"
+                android:layout_margin="5dp"
+                android:foregroundGravity="center"
+                >
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/imagen_boton_tests"
+                    android:layout_width="match_parent"
+                    android:scaleType="centerCrop"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/tests"
+                    />
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
 
 </LinearLayout>

@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.nextandlearn.fragmentos.fragmentoListaVocabularioDirections
+import com.example.nextandlearn.fragmentos.fragmentoMenuTestsVocabularioDirections
 import com.example.nextandlearn.modelo.VocabularioDataBase
 import com.example.nextandlearn.modelo.obtenerBaseDatos
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -41,8 +42,13 @@ class MainActivity : AppCompatActivity() {
         obtenerBaseDatos(applicationContext)
     }
 
-    //De lista leyendas a detalles
+    //De la lista de colecciones al menu de tests o vocabulario
     fun onColeccionSelected(coleccion: String) {
-        findNavController(R.id.fragment2).navigate(fragmentoListaVocabularioDirections.actionListaVocabularioToFragmentoCartasPalabras(coleccion))
+        findNavController(R.id.fragment2).navigate(fragmentoListaVocabularioDirections.actionListaVocabularioToFragmentoMenuTestsVocabulario(coleccion))
+    }
+
+    //Del menu de tests o vocabulario a la lista de palabras
+    fun onVocabularioSelected(coleccion: String){
+        findNavController(R.id.fragment2).navigate(fragmentoMenuTestsVocabularioDirections.actionFragmentoMenuTestsVocabularioToFragmentoCartasPalabras(coleccion))
     }
 }

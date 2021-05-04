@@ -11,8 +11,8 @@
         android:label="fragment_fragmento_lista_vocabulario"
         tools:layout="@layout/fragmento_lista_vocabulario" >
         <action
-            android:id="@+id/action_listaVocabulario_to_fragmentoCartasPalabras"
-            app:destination="@id/fragmentoCartasPalabras" />
+            android:id="@+id/action_listaVocabulario_to_fragmentoMenuTestsVocabulario"
+            app:destination="@id/fragmentoMenuTestsVocabulario" />
     </fragment>
     <fragment
         android:id="@+id/tests"
@@ -24,6 +24,20 @@
         android:name="com.example.nextandlearn.fragmentos.fragmentoCartasPalabras"
         android:label="fragmento_cartas_palabras"
         tools:layout="@layout/fragmento_cartas_palabras" >
+        <argument
+            android:name="coleccion"
+            app:argType="string"
+            android:defaultValue=""
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentoMenuTestsVocabulario"
+        android:name="com.example.nextandlearn.fragmentos.fragmentoMenuTestsVocabulario"
+        android:label="fragmento_menu_tests_vocabulario"
+        tools:layout="@layout/fragmento_menu_tests_vocabulario" >
+        <action
+            android:id="@+id/action_fragmentoMenuTestsVocabulario_to_fragmentoCartasPalabras"
+            app:destination="@id/fragmentoCartasPalabras" />
         <argument
             android:name="coleccion"
             app:argType="string"
