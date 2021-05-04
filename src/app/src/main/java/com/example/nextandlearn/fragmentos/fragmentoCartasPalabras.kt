@@ -3,6 +3,7 @@ package com.example.nextandlearn.fragmentos
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,14 +21,14 @@ import com.example.nextandlearn.modelo.Palabra
 import com.example.nextandlearn.modelo.VocabularioDataBase
 import com.example.nextandlearn.modelo.obtenerBaseDatos
 import me.relex.circleindicator.CircleIndicator3
+import java.util.*
 
 
-class fragmentoCartasPalabras : Fragment() {
+class fragmentoCartasPalabras : Fragment(){
     private val argumentos:fragmentoCartasPalabrasArgs by navArgs()
     private lateinit var slider_palabras: ViewPager2
     private lateinit var indicador_slider: CircleIndicator3
     private lateinit var palabras:MutableList<Palabra>
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +38,6 @@ class fragmentoCartasPalabras : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragmento_cartas_palabras, container, false)
-
 
         //Obtenemos las vistas de los elementos
         slider_palabras = view.findViewById<ViewPager2>(R.id.slider_palabras_ly)
@@ -62,8 +62,6 @@ class fragmentoCartasPalabras : Fragment() {
                 palabra_espanol_vista.text = palabra.ingles.capitalize()
                 boton_reproducir_vista.visibility = View.VISIBLE
             }
-
-
         }
         slider_palabras.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         indicador_slider.setViewPager(slider_palabras)
@@ -77,6 +75,4 @@ class fragmentoCartasPalabras : Fragment() {
 
 
     }
-
-
 }

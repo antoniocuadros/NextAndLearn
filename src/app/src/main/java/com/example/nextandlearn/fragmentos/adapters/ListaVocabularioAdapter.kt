@@ -2,6 +2,7 @@ package com.example.nextandlearn.fragmentos.adapters
 
 import android.content.Context
 import android.opengl.Visibility
+import android.speech.tts.TextToSpeech
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,8 @@ import com.example.nextandlearn.R
 import com.example.nextandlearn.modelo.Palabra
 import com.example.nextandlearn.modelo.VocabularioDataBase
 import com.example.nextandlearn.modelo.obtenerBaseDatos
+import org.w3c.dom.Text
+import java.util.*
 
 
 class ListaVocabularioAdapter(var palabras:MutableList<Palabra>,context: Context, val clickListener: (Palabra, View)-> Unit): RecyclerView.Adapter<ListaVocabularioAdapter.Pager2ViewHolder>() {
@@ -21,8 +24,8 @@ class ListaVocabularioAdapter(var palabras:MutableList<Palabra>,context: Context
         val espanol = itemView.findViewById<TextView>(R.id.palabra_espanol)
         val boton = itemView.findViewById<Button>(R.id.boton_anadir2)
         val boton_reproducir = itemView.findViewById<ImageButton>(R.id.boton_reproducir)
-
         val db:VocabularioDataBase = obtenerBaseDatos(context)
+
         //Para poder hacer click en los elementos
         init{
             itemView.setOnClickListener{
@@ -36,7 +39,11 @@ class ListaVocabularioAdapter(var palabras:MutableList<Palabra>,context: Context
                 db.palabraDao.actualizaPalabra(palabra)
                 boton.visibility = View.GONE
             }
-            
+
+            boton_reproducir.setOnClickListener {
+                var palabra = palabras[adapterPosition]
+                Toast.makeText(context, "asasa", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
