@@ -33,6 +33,11 @@ class fragmentoMenuTestsVocabulario : Fragment() {
             (activity as MainActivity).onVocabularioSelected(coleccion)
         }
 
+        boton_tests.setOnClickListener {
+            var coleccion = argumentos.coleccion
+            (activity as MainActivity).onTestsSelected(coleccion)
+        }
+
         return view
     }
 }

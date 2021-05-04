@@ -18,7 +18,13 @@
         android:id="@+id/tests"
         android:name="com.example.nextandlearn.fragmentos.fragmentoTests"
         android:label="fragment_fragmento_tests"
-        tools:layout="@layout/fragmento_tests" />
+        tools:layout="@layout/fragmento_tests" >
+        <argument
+            android:name="coleccion"
+            app:argType="string"
+            android:defaultValue=""
+            />
+    </fragment>
     <fragment
         android:id="@+id/fragmentoCartasPalabras"
         android:name="com.example.nextandlearn.fragmentos.fragmentoCartasPalabras"
@@ -43,5 +49,8 @@
             app:argType="string"
             android:defaultValue=""
             />
+        <action
+            android:id="@+id/action_fragmentoMenuTestsVocabulario_to_tests"
+            app:destination="@id/tests" />
     </fragment>
 </navigation>
