@@ -181,6 +181,7 @@ class fragmentoTests : Fragment() {
                 //Marcamos como aprobado el test
                 var coleccion_completada = db.coleccionDao.obtenerColeccionSegunIdentificador(argumentos.coleccion)
                 coleccion_completada[0].completada = true
+                db.coleccionDao.actualizaColeccion(coleccion_completada[0])
             }
             else { //No ha terminado los tests por tener 2 o más fallos
                 texto_acierto_fallo.text = "Suspenso"
