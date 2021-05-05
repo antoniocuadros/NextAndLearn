@@ -17,6 +17,6 @@ data class Coleccion(val nombre_coleccion:String,
                      val nivel:String,
                      @PrimaryKey val identificador:String,
                      val imagen:String,
-                     val completada:Boolean)
+                     var completada:Boolean)
 {
 }

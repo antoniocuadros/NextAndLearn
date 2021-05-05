@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.navigation.fragment.navArgs
+import com.example.nextandlearn.MainActivity
 import com.example.nextandlearn.R
 import com.example.nextandlearn.modelo.Palabra
 import com.example.nextandlearn.modelo.VocabularioDataBase
@@ -129,8 +130,7 @@ class fragmentoTests : Fragment() {
     private fun gestionaSiguienteAciertoFallo(){
         boton_siguiente_acierto_fallo.setOnClickListener{
             if(boton_siguiente_acierto_fallo.text == "Finalizar"){ //Hemos terminado, vamos a la pantalla de colecciones
-                Toast.makeText(context, "ububuebuebue", Toast.LENGTH_SHORT).show()
-                
+                (activity as MainActivity).fromTestsToColecciones()
             }
             else{ //Generamos las siguientes
                 if(pregunta < numero_preguntas-1){
@@ -174,11 +174,16 @@ class fragmentoTests : Fragment() {
         }
         if(pregunta == numero_preguntas-1){
             if(fallos < 2){ //Ha terminado los tests correctamente
-                texto_acierto_fallo.text = "¡Has completado esta colección!"
+                texto_acierto_fallo.text = "¡Aprobado!"
+                texto_acierto_fallo.textSize = 40.0F
                 boton_siguiente_acierto_fallo.text = "Finalizar"
+
+                //Marcamos como aprobado el test
+                var coleccion_completada = db.coleccionDao.obtenerColeccionSegunIdentificador(argumentos.coleccion)
+                coleccion_completada[0].completada = true
             }
             else { //No ha terminado los tests por tener 2 o más fallos
-                texto_acierto_fallo.text = "Intente de nuevo el test para terminar la colección"
+                texto_acierto_fallo.text = "Suspenso"
                 texto_acierto_fallo.textSize = 40.0F
             }
         }
