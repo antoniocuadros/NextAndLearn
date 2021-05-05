@@ -1,11 +1,13 @@
 package com.example.nextandlearn.fragmentos.adapters
 
 import android.content.Context
+import android.graphics.Color
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import com.example.nextandlearn.R
 import com.example.nextandlearn.modelo.Coleccion
 import com.example.nextandlearn.modelo.Palabra
@@ -45,6 +47,7 @@ class ColeccionAdapter(var listaColeccion:MutableList<Coleccion>, context: Conte
         val imagen_coleccion = vista.findViewById<ImageView>(R.id.coleccion_imagen)
         val nombre_coleccion = vista.findViewById<TextView>(R.id.coleccion_nombre)
         val nivel = vista.findViewById<TextView>(R.id.coleccion_nivel)
+        val carta = vista.findViewById<CardView>(R.id.carta_coleccion)
 
         // Paso 4)
         var imagen = coleccionVocabulario.imagen
@@ -53,6 +56,20 @@ class ColeccionAdapter(var listaColeccion:MutableList<Coleccion>, context: Conte
         nombre_coleccion.text = coleccionVocabulario.nombre_coleccion
         nivel.text = coleccionVocabulario.nivel
 
+        if(coleccionVocabulario.completada == true){
+            carta.setCardBackgroundColor(Color.parseColor("#469436"))
+        }
+        else{
+            if(listaColeccion[position].completada == false && listaColeccion[position-1].completada ==true){
+
+            }
+            else{
+                carta.setCardBackgroundColor(Color.parseColor("#454545"))
+                var id_imagen2 = context.resources.getIdentifier(imagen+"g", "drawable", "com.example.nextandlearn")
+                imagen_coleccion.setImageResource(id_imagen2)
+            }
+
+        }
         //Paso 5)
         return vista
     }
