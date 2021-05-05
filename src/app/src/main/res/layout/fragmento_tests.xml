@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,10 +10,9 @@
     >
 
 
-    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_margin="10dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="5dp"
@@ -43,6 +43,35 @@
                 android:layout_marginRight="20dp"
                 />
 
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/aciertos_ly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:text="X Correctas"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/verde"
+                android:textSize="50dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/fallos_ly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/rojo"
+                android:textSize="50dp"
+                android:textStyle="bold"
+                android:text="X Erróneas"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                />
+
             <Button
                 android:layout_width="200dp"
                 android:layout_height="50dp"
@@ -55,7 +84,7 @@
 
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/test_tipo_1"
+            android:id="@+id/layout_test"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"

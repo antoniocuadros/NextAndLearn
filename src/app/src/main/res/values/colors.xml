@@ -11,4 +11,6 @@
     <color name="azul_claro">#B165D4</color>
     <color name="azul_selected">#FFFFFFFF</color>
     <color name="morado_pastel">#E0BBE4</color>
+    <color name="verde">#469436</color>
+    <color name="rojo">#D73333</color>
 </resources>
