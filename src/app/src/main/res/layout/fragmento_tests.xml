@@ -104,6 +104,7 @@
                     android:id="@+id/fila_superior"
                     >
                     <LinearLayout
+                        android:id="@+id/opcion1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
@@ -146,6 +147,7 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         android:gravity="center"
+                        android:id="@+id/opcion3"
                         >
                         <androidx.cardview.widget.CardView
                             android:layout_width="130dp"
@@ -190,6 +192,7 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         android:gravity="center"
+                        android:id="@+id/opcion2"
                         >
                         <androidx.cardview.widget.CardView
                             android:layout_width="130dp"
@@ -228,6 +231,7 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         android:gravity="center"
+                        android:id="@+id/opcion4"
                         >
                         <androidx.cardview.widget.CardView
                             android:layout_width="130dp"

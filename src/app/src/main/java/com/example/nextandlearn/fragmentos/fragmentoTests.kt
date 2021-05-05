@@ -1,14 +1,12 @@
 package com.example.nextandlearn.fragmentos
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.navigation.fragment.navArgs
 import com.example.nextandlearn.R
 import com.example.nextandlearn.modelo.Palabra
@@ -23,6 +21,7 @@ class fragmentoTests : Fragment() {
     private lateinit var db:VocabularioDataBase
     private var pregunta = 0
     private var numero_preguntas = 0
+    private lateinit var opcion_elegida:Palabra
 
     private lateinit var enunciado:TextView
     private lateinit var imagen_opcion_1:ImageView
@@ -34,6 +33,10 @@ class fragmentoTests : Fragment() {
     private lateinit var imagen_opcion_4:ImageView
     private lateinit var text_opcion_4:TextView
     private lateinit var boton_siguiente_test:Button
+    private lateinit var opcion_1:LinearLayout
+    private lateinit var opcion_2:LinearLayout
+    private lateinit var opcion_3:LinearLayout
+    private lateinit var opcion_4:LinearLayout
 
     private lateinit var boton_siguiente_acierto_fallo:Button
     private lateinit var texto_acierto_fallo:TextView
@@ -58,10 +61,118 @@ class fragmentoTests : Fragment() {
         //Obtenemos todas las palabras de la coleccion, se almacenan en la variable de clase
         obtener_palabras()
 
+
         //Obtenemos las opciones
         var opciones:MutableList<Palabra> = generaOpciones()
 
+        //Las añadimos a la vista
+        anadeOpcionesVista(opciones)
+
+
+        /*
+            Añadimos los listeners de los botones de las opciones
+         */
+        anadeListenersOpciones(opciones)
+
         return view
+    }
+
+    private fun cambiaColorSeleccionada(opcion:Int){
+        when(opcion){
+            1 -> {
+                opcion_1.setBackgroundColor(Color.parseColor("#B165D4"))
+                opcion_2.setBackgroundColor(Color.parseColor("#E0BBE4"))
+                opcion_3.setBackgroundColor(Color.parseColor("#E0BBE4"))
+                opcion_4.setBackgroundColor(Color.parseColor("#E0BBE4"))
+            }
+            2 -> {
+                opcion_1.setBackgroundColor(Color.parseColor("#E0BBE4"))
+                opcion_2.setBackgroundColor(Color.parseColor("#B165D4"))
+                opcion_3.setBackgroundColor(Color.parseColor("#E0BBE4"))
+                opcion_4.setBackgroundColor(Color.parseColor("#E0BBE4"))
+            }
+            3 -> {
+                opcion_1.setBackgroundColor(Color.parseColor("#E0BBE4"))
+                opcion_2.setBackgroundColor(Color.parseColor("#E0BBE4"))
+                opcion_3.setBackgroundColor(Color.parseColor("#B165D4"))
+                opcion_4.setBackgroundColor(Color.parseColor("#E0BBE4"))
+            }
+            4 -> {
+                opcion_1.setBackgroundColor(Color.parseColor("#E0BBE4"))
+                opcion_2.setBackgroundColor(Color.parseColor("#E0BBE4"))
+                opcion_3.setBackgroundColor(Color.parseColor("#E0BBE4"))
+                opcion_4.setBackgroundColor(Color.parseColor("#B165D4"))
+            }
+        }
+    }
+
+    /*
+        Este método se encarga de definir los listener de cada una de las cuatro opciones posibles
+        y almacena el valor elegido en una variable de la clase para su posterior tratamiento.
+     */
+    private fun anadeListenersOpciones(opciones:MutableList<Palabra>){
+        opcion_1.setOnClickListener {
+            opcion_elegida = opciones[0]
+            Toast.makeText(context, opcion_elegida.toString(), Toast.LENGTH_SHORT).show()
+            cambiaColorSeleccionada(1)
+        }
+
+        opcion_2.setOnClickListener {
+            opcion_elegida = opciones[1]
+            Toast.makeText(context, opcion_elegida.toString(), Toast.LENGTH_SHORT).show()
+            cambiaColorSeleccionada(2)
+        }
+
+        opcion_3.setOnClickListener {
+            opcion_elegida = opciones[2]
+            Toast.makeText(context, opcion_elegida.toString(), Toast.LENGTH_SHORT).show()
+            cambiaColorSeleccionada(3)
+        }
+
+        opcion_4.setOnClickListener {
+            opcion_elegida = opciones[3]
+            Toast.makeText(context, opcion_elegida.toString(), Toast.LENGTH_SHORT).show()
+            cambiaColorSeleccionada(4)
+        }
+
+    }
+
+
+    /*
+        Este método se encarga de comprobar si es correcta o no la respuesta
+     */
+    private fun opcionSeleccionada(palabra:Palabra):Boolean{
+        return palabra.ingles == vocabulario[pregunta].ingles
+    }
+
+    /*
+        Este método se encarga de dado un conjunto de opciones añadirlas a la vista para que se muestren
+        junto a un enunciado formando una pregunta del test
+     */
+    private fun anadeOpcionesVista(opciones:MutableList<Palabra>){
+        var identificador_imagen:Int
+
+        enunciado.text = "¿Cual de las siguientes opciones es " + vocabulario[pregunta].espanol.capitalize() + " en inglés?"
+
+        //Opcion 1
+        identificador_imagen = context?.resources?.getIdentifier(opciones[0].imagen, "drawable", "com.example.nextandlearn")!!
+        imagen_opcion_1.setImageResource(identificador_imagen)
+        text_opcion_1.text = opciones[0].ingles.capitalize()
+
+        //Opcion 2
+        identificador_imagen = context?.resources?.getIdentifier(opciones[2].imagen, "drawable", "com.example.nextandlearn")!!
+        imagen_opcion_2.setImageResource(identificador_imagen)
+        text_opcion_2.text = opciones[2].ingles.capitalize()
+
+        //Opcion 3
+        identificador_imagen = context?.resources?.getIdentifier(opciones[1].imagen, "drawable", "com.example.nextandlearn")!!
+        imagen_opcion_3.setImageResource(identificador_imagen)
+        text_opcion_3.text = opciones[1].ingles.capitalize()
+
+        //Opcion 4
+        identificador_imagen = context?.resources?.getIdentifier(opciones[3].imagen, "drawable", "com.example.nextandlearn")!!
+        imagen_opcion_4.setImageResource(identificador_imagen)
+        text_opcion_4.text = opciones[3].ingles.capitalize()
     }
 
     /*
@@ -70,6 +181,9 @@ class fragmentoTests : Fragment() {
     private fun generaOpciones():MutableList<Palabra>{
         //Obtenemos la palabra que va a ser preguntada
         var palabra_pregunta = vocabulario[pregunta]
+
+        //Por defecto a la opcion elegida
+        opcion_elegida = Palabra("none","none", "none","none",false)
 
         //Ahora 'aleatoriamente' cogemos tres palabras distintas a la anterior
         //La estrategia para elegir las palabras de forma sencilla es coger
@@ -127,6 +241,10 @@ class fragmentoTests : Fragment() {
         imagen_opcion_4 = view.findViewById(R.id.imagen_opcion4)
         text_opcion_4 = view.findViewById(R.id.texto_opcion4)
         boton_siguiente_test = view.findViewById(R.id.boton_siguiente)
+        opcion_1 = view.findViewById(R.id.opcion1)
+        opcion_2 = view.findViewById(R.id.opcion2)
+        opcion_3 = view.findViewById(R.id.opcion3)
+        opcion_4 = view.findViewById(R.id.opcion4)
 
         boton_siguiente_acierto_fallo = view.findViewById(R.id.boton_siguiente2)
         texto_acierto_fallo = view.findViewById(R.id.mensaje_resultado)
