@@ -68,9 +68,6 @@ class ColeccionAdapter(var listaColeccion:MutableList<Coleccion>, context: Conte
                    imagen_coleccion.setImageResource(id_imagen2)
                }
            }
-
-
-
         }
         //Paso 5)
         return vista

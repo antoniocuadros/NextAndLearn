@@ -1,5 +1,6 @@
 package com.example.nextandlearn.fragmentos
 
+import android.graphics.Color
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import androidx.fragment.app.Fragment
@@ -40,11 +41,20 @@ class fragmentoListaVocabulario : Fragment() {
         //seteamos el click listener de las cartas que aparecen
         cuadricula_coleccionVocabulario.setOnItemClickListener { cuadricula_coleccionVocabulario, _, position, _ ->
             var coleccion:Coleccion = cuadricula_coleccionVocabulario.getItemAtPosition(position) as Coleccion
-            if((colecciones[position].completada == false && position != 0 && colecciones[position-1].completada ==true) || (colecciones[position].completada == true)){
+
+            //Si está completada podemos darle
+            if(coleccion.completada == true){
                 (activity as MainActivity).onColeccionSelected(coleccion.identificador)
             }
-            if(position == 0){
-                (activity as MainActivity).onColeccionSelected(coleccion.identificador)
+            else{
+                if(position != 0){
+                    if(colecciones[position-1].completada == true){
+                        (activity as MainActivity).onColeccionSelected(coleccion.identificador)
+                    }
+                }
+                else{
+                    (activity as MainActivity).onColeccionSelected(coleccion.identificador)
+                }
             }
 
         }
