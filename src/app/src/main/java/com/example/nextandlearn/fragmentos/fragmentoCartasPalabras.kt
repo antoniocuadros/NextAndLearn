@@ -1,5 +1,7 @@
 package com.example.nextandlearn.fragmentos
 
+import android.animation.AnimatorInflater
+import android.animation.AnimatorSet
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -29,6 +31,8 @@ class fragmentoCartasPalabras : Fragment(){
     private lateinit var slider_palabras: ViewPager2
     private lateinit var indicador_slider: CircleIndicator3
     private lateinit var palabras:MutableList<Palabra>
+    private lateinit var animator:AnimatorSet
+    private lateinit var animator2:AnimatorSet
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +42,10 @@ class fragmentoCartasPalabras : Fragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragmento_cartas_palabras, container, false)
+
+        //Asignamos el valor al animator
+        animator = AnimatorInflater.loadAnimator(context, R.animator.giro_carta_animator) as AnimatorSet
+        animator2 = AnimatorInflater.loadAnimator(context, R.animator.giro_reverse_animator) as AnimatorSet
 
         //Obtenemos las vistas de los elementos
         slider_palabras = view.findViewById<ViewPager2>(R.id.slider_palabras_ly)
@@ -55,10 +63,21 @@ class fragmentoCartasPalabras : Fragment(){
 
             //Estaba la palabra en inglés
             if(palabra_espanol_vista.text == palabra.ingles.capitalize()){
+                animator.setTarget(vista)
+                animator2.setTarget(vista)
+
+                animator.start()
+                animator2.start()
+
                 palabra_espanol_vista.text = palabra.espanol.capitalize()
                 boton_reproducir_vista.visibility = View.GONE
             }
             else{ //Estaba la palabra en español
+                animator.setTarget(vista)
+                animator2.setTarget(vista)
+                animator.start()
+                animator2.start()
+
                 palabra_espanol_vista.text = palabra.ingles.capitalize()
                 boton_reproducir_vista.visibility = View.VISIBLE
             }
