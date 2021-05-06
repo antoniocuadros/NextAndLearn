@@ -43,6 +43,15 @@ class fragmentoCartasPalabras : Fragment(){
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragmento_cartas_palabras, container, false)
 
+        /*
+
+        var navigationView: BottomNavigationView = requireActivity().findViewById(R.id.menu_inferior);
+        var menu:Menu = navigationView.getMenu();
+        var menuItem:MenuItem = menu.findItem(R.id.mi_baraja+);
+        menuItem.setChecked(true)
+
+         */
+
         //Asignamos el valor al animator
         animator = AnimatorInflater.loadAnimator(context, R.animator.giro_carta_animator) as AnimatorSet
         animator2 = AnimatorInflater.loadAnimator(context, R.animator.giro_reverse_animator) as AnimatorSet
