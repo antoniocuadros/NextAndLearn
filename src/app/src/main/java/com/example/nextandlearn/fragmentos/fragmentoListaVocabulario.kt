@@ -40,7 +40,10 @@ class fragmentoListaVocabulario : Fragment() {
         //seteamos el click listener de las cartas que aparecen
         cuadricula_coleccionVocabulario.setOnItemClickListener { cuadricula_coleccionVocabulario, _, position, _ ->
             var coleccion:Coleccion = cuadricula_coleccionVocabulario.getItemAtPosition(position) as Coleccion
-            if((colecciones[position].completada == false && colecciones[position-1].completada ==true) || (colecciones[position].completada == true)){
+            if((colecciones[position].completada == false && position != 0 && colecciones[position-1].completada ==true) || (colecciones[position].completada == true)){
+                (activity as MainActivity).onColeccionSelected(coleccion.identificador)
+            }
+            if(position == 0){
                 (activity as MainActivity).onColeccionSelected(coleccion.identificador)
             }
 

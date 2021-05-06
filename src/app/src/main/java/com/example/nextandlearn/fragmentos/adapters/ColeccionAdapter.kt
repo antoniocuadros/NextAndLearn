@@ -56,18 +56,20 @@ class ColeccionAdapter(var listaColeccion:MutableList<Coleccion>, context: Conte
         nombre_coleccion.text = coleccionVocabulario.nombre_coleccion
         nivel.text = coleccionVocabulario.nivel
 
+        //Si está completada la ponemos en verde
         if(coleccionVocabulario.completada == true){
             carta.setCardBackgroundColor(Color.parseColor("#469436"))
         }
         else{
-            if(listaColeccion[position].completada == false && listaColeccion[position-1].completada ==true){
+           if(position != 0){
+               if(listaColeccion[position-1].completada == false){
+                   carta.setCardBackgroundColor(Color.parseColor("#454545"))
+                   var id_imagen2 = context.resources.getIdentifier(imagen+"g", "drawable", "com.example.nextandlearn")
+                   imagen_coleccion.setImageResource(id_imagen2)
+               }
+           }
 
-            }
-            else{
-                carta.setCardBackgroundColor(Color.parseColor("#454545"))
-                var id_imagen2 = context.resources.getIdentifier(imagen+"g", "drawable", "com.example.nextandlearn")
-                imagen_coleccion.setImageResource(id_imagen2)
-            }
+
 
         }
         //Paso 5)

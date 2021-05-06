@@ -53,13 +53,16 @@
             android:gravity="center"
             android:id="@+id/layout_button"
             >
-            <Button
-                android:layout_width="200dp"
-                android:layout_height="50dp"
+            <ImageButton
                 android:id="@+id/boton_anadir2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:src="@drawable/anadir"
                 android:backgroundTint="@color/azul_claro"
-                android:text="Añadir a Refuerzo"
-                android:layout_margin="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 />
             <ImageButton
                 android:id="@+id/boton_reproducir"
