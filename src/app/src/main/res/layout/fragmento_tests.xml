@@ -117,6 +117,16 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 />
+
+            <EditText
+                android:visibility="gone"
+                android:id="@+id/input_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:hint="Escriba aquí"
+                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

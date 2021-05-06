@@ -2,6 +2,7 @@ package com.example.nextandlearn.fragmentos
 
 import android.graphics.Color
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,7 +18,7 @@ import java.util.*
 import kotlin.random.Random
 
 
-class fragmentoTests : Fragment() {
+class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
     private lateinit var vocabulario:MutableList<Palabra>
     private lateinit var db:VocabularioDataBase
     private var pregunta = 0
@@ -26,6 +27,8 @@ class fragmentoTests : Fragment() {
     private var aciertos = 0
     private var fallos = 0
     private lateinit var opciones: MutableList<Palabra>
+    private lateinit var reproductor:TextToSpeech
+    private var opcion = 3
 
     private lateinit var enunciado:TextView
     private lateinit var imagen_opcion_1:ImageView
@@ -45,6 +48,8 @@ class fragmentoTests : Fragment() {
     private lateinit var layout_resultado:LinearLayout
     private lateinit var num_aciertos_ly:TextView
     private lateinit var num_fallos_ly:TextView
+    private lateinit var boton_sonido:ImageButton
+    private lateinit var input_test:EditText
 
     private lateinit var boton_siguiente_acierto_fallo:Button
     private lateinit var texto_acierto_fallo:TextView
@@ -62,6 +67,8 @@ class fragmentoTests : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragmento_tests, container, false)
+
+        reproductor = TextToSpeech(context, this)
 
         //Inicializamos las vistas
         inicializa_vistas(view)
@@ -198,6 +205,19 @@ class fragmentoTests : Fragment() {
      */
     private fun gestionaBotonSiguiente(){
         boton_siguiente_test.setOnClickListener{
+            //Caso de la opción 3, recuperamos aquí el texto introducido
+            if(opcion == 3) {
+                var palabra_escrita = input_test.text.toString()
+                var resultado: MutableList<Palabra> = (db.palabraDao.obtenerPalabraSegunIngles(palabra_escrita.decapitalize()))
+                if (resultado.size > 0) {
+                    opcion_elegida = resultado[0]
+                } else {
+                    opcion_elegida = Palabra("palabra_escrita", "palabra_escrita", "none", "none", false)
+                }
+                input_test.text.clear()
+            }
+
+            //Comprobamos si es acierto o fallo
             if(opcion_elegida.ingles == "none"){
                 Toast.makeText(context, "Seleccione primero una opción", Toast.LENGTH_SHORT).show()
             }
@@ -238,7 +258,6 @@ class fragmentoTests : Fragment() {
             opcion_elegida = opciones[3]
             cambiaColorSeleccionada(4)
         }
-
     }
 
 
@@ -256,7 +275,33 @@ class fragmentoTests : Fragment() {
     private fun anadeOpcionesVista(){
         var identificador_imagen:Int
 
-        enunciado.text = "¿Cual de las siguientes opciones es " + vocabulario[pregunta].espanol.capitalize() + " en inglés?"
+        /*
+            En función del tipo de pregunta se hacen unas cosas u otras
+         */
+        when(opcion){
+            1 ->{ //Tipo 1, se pone una palabra en español y las opciones en inglés
+                enunciado.text = "¿Cual de las siguientes opciones es " + vocabulario[pregunta].espanol.capitalize() + " en inglés?"
+            }
+            2 ->{ //Tipo 2, listening, se da una reproducción de una palabra y se debe seleccionar la opción en inglés
+                enunciado.text = "¿Cual de las siguientes opciones se corresponde con la palabra que se reproduce?"
+                boton_sonido.visibility = View.VISIBLE
+                boton_sonido.setOnClickListener {
+                    reproductor.speak(vocabulario[pregunta].ingles, TextToSpeech.QUEUE_FLUSH, null, null)
+                }
+            }
+            3 ->{ //Tipo 3 writting, se da una palabra en español y se debe escribir en inglés.
+                enunciado.text = "¿Cómo se escribe " + vocabulario[pregunta].espanol + " en inglés?"
+                opcion_1.visibility = View.GONE
+                opcion_2.visibility = View.GONE
+                opcion_3.visibility = View.GONE
+                opcion_4.visibility = View.GONE
+
+                input_test.visibility = View.VISIBLE
+            }
+        }
+
+
+
 
         //Opcion 1
         identificador_imagen = context?.resources?.getIdentifier(opciones[0].imagen, "drawable", "com.example.nextandlearn")!!
@@ -353,8 +398,16 @@ class fragmentoTests : Fragment() {
         layout_resultado = view.findViewById(R.id.layout_resultado)
         num_aciertos_ly = view.findViewById(R.id.aciertos_ly)
         num_fallos_ly = view.findViewById(R.id.fallos_ly)
+        boton_sonido = view.findViewById(R.id.boton_reproducir)
+        input_test = view.findViewById(R.id.input_test)
 
         boton_siguiente_acierto_fallo = view.findViewById(R.id.boton_siguiente2)
         texto_acierto_fallo = view.findViewById(R.id.mensaje_resultado)
+    }
+
+    override fun onInit(status: Int) {
+        if(status == TextToSpeech.SUCCESS){
+            reproductor.language = Locale.UK
+        }
     }
 }
