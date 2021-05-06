@@ -55,8 +55,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     //Del menu de tests o vocabulario a los tests
-    fun onTestsSelected(coleccion: String){
-        findNavController(R.id.fragment2).navigate(fragmentoMenuTestsVocabularioDirections.actionFragmentoMenuTestsVocabularioToTests(coleccion))
+    fun onTestsSelected(coleccion: String, opcion:Int){
+        findNavController(R.id.fragment2).navigate(fragmentoMenuTestsVocabularioDirections.actionFragmentoMenuTestsVocabularioToTests(coleccion, opcion))
     }
 
     //Del menu de tests o vocabulario a los tests

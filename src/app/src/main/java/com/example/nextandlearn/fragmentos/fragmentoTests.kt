@@ -23,6 +23,7 @@ import kotlin.random.Random
 
 
 class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
+    private val argumentos:fragmentoTestsArgs by navArgs()
     private lateinit var vocabulario:MutableList<Palabra>
     private lateinit var db:VocabularioDataBase
     private var pregunta = 0
@@ -32,7 +33,7 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
     private var fallos = 0
     private lateinit var opciones: MutableList<Palabra>
     private lateinit var reproductor:TextToSpeech
-    private var opcion = 4
+    private var opcion = 0
 
     private lateinit var enunciado:TextView
     private lateinit var imagen_opcion_1:ImageView
@@ -59,7 +60,7 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
     private lateinit var boton_siguiente_acierto_fallo:Button
     private lateinit var texto_acierto_fallo:TextView
 
-    private val argumentos:fragmentoCartasPalabrasArgs by navArgs()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,6 +74,7 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragmento_tests, container, false)
 
+        opcion = argumentos.opcion
         reproductor = TextToSpeech(context, this)
 
         //Inicializamos las vistas

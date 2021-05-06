@@ -24,9 +24,14 @@
             app:argType="string"
             android:defaultValue=""
             />
+        <argument
+            android:name="opcion"
+            app:argType="integer"
+            />
         <action
             android:id="@+id/action_tests_to_listaVocabulario"
             app:destination="@id/listaVocabulario" />
+
     </fragment>
     <fragment
         android:id="@+id/fragmentoCartasPalabras"
