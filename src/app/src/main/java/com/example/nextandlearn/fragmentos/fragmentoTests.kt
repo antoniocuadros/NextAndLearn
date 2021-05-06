@@ -1,7 +1,11 @@
 package com.example.nextandlearn.fragmentos
 
+import android.app.Activity
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.speech.RecognizerIntent
+import android.speech.SpeechRecognizer
 import android.speech.tts.TextToSpeech
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -28,7 +32,7 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
     private var fallos = 0
     private lateinit var opciones: MutableList<Palabra>
     private lateinit var reproductor:TextToSpeech
-    private var opcion = 3
+    private var opcion = 4
 
     private lateinit var enunciado:TextView
     private lateinit var imagen_opcion_1:ImageView
@@ -50,6 +54,7 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
     private lateinit var num_fallos_ly:TextView
     private lateinit var boton_sonido:ImageButton
     private lateinit var input_test:EditText
+    private lateinit var boton_grabar:ImageButton
 
     private lateinit var boton_siguiente_acierto_fallo:Button
     private lateinit var texto_acierto_fallo:TextView
@@ -258,6 +263,10 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
             opcion_elegida = opciones[3]
             cambiaColorSeleccionada(4)
         }
+
+        boton_grabar.setOnClickListener{
+            grabacionDisponible()
+        }
     }
 
 
@@ -297,6 +306,15 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
                 opcion_4.visibility = View.GONE
 
                 input_test.visibility = View.VISIBLE
+            }
+            4->{
+                enunciado.text = "¿Cómo se pronuncia " + vocabulario[pregunta].espanol + " en inglés?"
+                opcion_1.visibility = View.GONE
+                opcion_2.visibility = View.GONE
+                opcion_3.visibility = View.GONE
+                opcion_4.visibility = View.GONE
+
+                boton_grabar.visibility = View.VISIBLE
             }
         }
 
@@ -400,9 +418,52 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
         num_fallos_ly = view.findViewById(R.id.fallos_ly)
         boton_sonido = view.findViewById(R.id.boton_reproducir)
         input_test = view.findViewById(R.id.input_test)
+        boton_grabar = view.findViewById(R.id.boton_grabar)
 
         boton_siguiente_acierto_fallo = view.findViewById(R.id.boton_siguiente2)
         texto_acierto_fallo = view.findViewById(R.id.mensaje_resultado)
+    }
+
+    /*
+        Los dos métodos siguientes tienen que ver con permitir la grabación de sonido
+     */
+    /*
+        Este método captura el código de la grabación y ve si es correcto
+     */
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode == 100 && resultCode == Activity.RESULT_OK){
+            var texto_hablado = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
+
+            var palabra_escrita = texto_hablado?.get(0).toString()
+            Toast.makeText(context, palabra_escrita.toString(), Toast.LENGTH_SHORT).show()
+            var resultado: MutableList<Palabra> = (db.palabraDao.obtenerPalabraSegunIngles(palabra_escrita.decapitalize()))
+            if (resultado.size > 0) {
+                opcion_elegida = resultado[0]
+            } else {
+                opcion_elegida = Palabra("palabra_escrita", "palabra_escrita", "none", "none", false)
+            }
+
+
+        }
+    }
+
+    /*
+        Este método se encarga de comprobar si el micrófono está disponible, si no lo está
+        muestra un mensaje al usuario y si lo está configuramos el idioma de la grabadora, en
+        este caso inglés.
+     */
+    private fun grabacionDisponible(){
+        if(!SpeechRecognizer.isRecognitionAvailable((context))){
+            Toast.makeText(context, "El micrófono no está disponible", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            var intent_grabar = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+            intent_grabar.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+            intent_grabar.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.UK)
+            startActivityForResult(intent_grabar, 100)
+        }
     }
 
     override fun onInit(status: Int) {

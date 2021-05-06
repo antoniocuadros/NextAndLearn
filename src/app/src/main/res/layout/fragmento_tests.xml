@@ -118,6 +118,19 @@
                 android:layout_marginRight="10dp"
                 />
 
+            <ImageButton
+                android:visibility="gone"
+                android:id="@+id/boton_grabar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:src="@drawable/grabar"
+                android:backgroundTint="@color/azul_claro"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                />
+
             <EditText
                 android:visibility="gone"
                 android:id="@+id/input_test"
