@@ -56,6 +56,8 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
     private lateinit var boton_sonido:ImageButton
     private lateinit var input_test:EditText
     private lateinit var boton_grabar:ImageButton
+    private lateinit var texto_porcentaje_actual:TextView
+    private lateinit var texto_porcentaje:TextView
 
     private lateinit var boton_siguiente_acierto_fallo:Button
     private lateinit var texto_acierto_fallo:TextView
@@ -160,6 +162,7 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
                         num_aciertos_ly.visibility = View.VISIBLE
                         num_aciertos_ly.text = "Aciertos: " + aciertos
                         num_fallos_ly.text = "Fallos: " + fallos
+
                         boton_siguiente_acierto_fallo.text = "Finalizar"
 
                     }
@@ -173,6 +176,40 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
     }
 
     /*
+        Este método se encarga de calcular los valores de los porcentajes obtenidos previamente
+        y en este intento
+     */
+    private fun obtenerPorcentajes():MutableList<Int>{
+        var col = db.coleccionDao.obtenerColeccionSegunIdentificador(argumentos.coleccion)
+        var porcentaje_actual = 0
+        var porcentaje_global = 0
+        var devolver:MutableList<Int> = mutableListOf()
+
+        when(opcion){
+            1->{
+                porcentaje_actual = (aciertos * 100) / numero_preguntas
+                porcentaje_global = (col[0].puntos_normal * 100) / numero_preguntas
+            }
+            2->{
+                porcentaje_actual = (aciertos * 100) / numero_preguntas
+                porcentaje_global = (col[0].puntos_listening * 100) / numero_preguntas
+            }
+            3->{
+                porcentaje_actual = (aciertos * 100) / numero_preguntas
+                porcentaje_global = (col[0].puntos_writing * 100) / numero_preguntas
+            }
+            4->{
+                porcentaje_actual = (aciertos * 100) / numero_preguntas
+                porcentaje_global = (col[0].puntos_speaking * 100) / numero_preguntas
+            }
+        }
+        devolver.add(porcentaje_actual)
+        devolver.add(porcentaje_global)
+
+        return devolver
+    }
+
+    /*
         Este método se encarga de gestionar los aciertos y fallos
      */
     private fun gestionaAciertoFallo(acierto:Boolean){
@@ -180,10 +217,12 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
         layout_resultado.visibility = View.VISIBLE
         if(acierto){
             texto_acierto_fallo.text = "¡Acierto!"
+
             aciertos++
         }
         else{
             texto_acierto_fallo.text = "Fallo"
+
             fallos++
         }
         if(pregunta == numero_preguntas-1){
@@ -191,6 +230,14 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
                 texto_acierto_fallo.text = "¡Aprobado!"
                 num_aciertos_ly.text = "Aciertos: " + aciertos
                 num_fallos_ly.text = "Fallos: " + fallos
+
+                var porcentajes:MutableList<Int> = mutableListOf()
+                porcentajes = obtenerPorcentajes()
+                var texto1 = "Puntuación máxima: " + porcentajes[1].toString()
+                var texto2 = "Puntuación actual: " + porcentajes[0].toString()
+                texto_porcentaje.text = texto1
+                texto_porcentaje_actual.text = texto2
+
                 texto_acierto_fallo.textSize = 40.0F
                 boton_siguiente_acierto_fallo.text = "Finalizar"
 
@@ -241,6 +288,13 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
                 num_fallos_ly.text = "Fallos: " + fallos
             }
         }
+
+        var porcentajes:MutableList<Int> = mutableListOf()
+        porcentajes = obtenerPorcentajes()
+        var texto1 = "Puntuación máxima: " + porcentajes[1].toString() + "%"
+        var texto2 = "Puntuación actual: " + porcentajes[0].toString() + "%"
+        texto_porcentaje.text = texto1
+        texto_porcentaje_actual.text = texto2
 
 
         gestionaSiguienteAciertoFallo()
@@ -460,6 +514,8 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
         boton_sonido = view.findViewById(R.id.boton_reproducir)
         input_test = view.findViewById(R.id.input_test)
         boton_grabar = view.findViewById(R.id.boton_grabar)
+        texto_porcentaje_actual = view.findViewById(R.id.texto_porcentaje_actual)
+        texto_porcentaje= view.findViewById(R.id.texto_porcentaje)
 
         boton_siguiente_acierto_fallo = view.findViewById(R.id.boton_siguiente2)
         texto_acierto_fallo = view.findViewById(R.id.mensaje_resultado)
