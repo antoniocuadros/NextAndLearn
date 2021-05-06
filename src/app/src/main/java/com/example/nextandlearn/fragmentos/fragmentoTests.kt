@@ -187,19 +187,58 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
             fallos++
         }
         if(pregunta == numero_preguntas-1){
-            if(fallos < 2){ //Ha terminado los tests correctamente
+            if(aciertos >= (numero_preguntas / 2)){ //Ha terminado los tests correctamente
                 texto_acierto_fallo.text = "¡Aprobado!"
+                num_aciertos_ly.text = "Aciertos: " + aciertos
+                num_fallos_ly.text = "Fallos: " + fallos
                 texto_acierto_fallo.textSize = 40.0F
                 boton_siguiente_acierto_fallo.text = "Finalizar"
 
                 //Marcamos como aprobado el test
                 var coleccion_completada = db.coleccionDao.obtenerColeccionSegunIdentificador(argumentos.coleccion)
-                coleccion_completada[0].completada = true
+
+                when(opcion){
+                    1 ->{
+                        coleccion_completada[0].completado_normal = true
+
+                        if(aciertos > coleccion_completada[0].puntos_normal){
+                            coleccion_completada[0].puntos_normal = aciertos
+                        }
+                    }
+                    2 ->{
+                        coleccion_completada[0].completado_listening = true
+
+                        if(aciertos > coleccion_completada[0].puntos_listening){
+                            coleccion_completada[0].puntos_listening = aciertos
+                        }
+                    }
+                    3 ->{
+                        coleccion_completada[0].completado_writing = true
+
+                        if(aciertos > coleccion_completada[0].puntos_writing){
+                            coleccion_completada[0].puntos_writing = aciertos
+                        }
+                    }
+                    4 ->{
+                        coleccion_completada[0].completado_listening = true
+
+                        if(aciertos > coleccion_completada[0].puntos_listening){
+                            coleccion_completada[0].puntos_listening = aciertos
+                        }
+                    }
+                }
+
+                if(coleccion_completada[0].completado_normal && coleccion_completada[0].completado_listening && coleccion_completada[0].completado_writing){
+                    coleccion_completada[0].completada = true
+                }
+
                 db.coleccionDao.actualizaColeccion(coleccion_completada[0])
             }
             else { //No ha terminado los tests por tener 2 o más fallos
                 texto_acierto_fallo.text = "Suspenso"
                 texto_acierto_fallo.textSize = 40.0F
+                num_aciertos_ly.text = "Aciertos: " + aciertos
+                num_fallos_ly.text = "Fallos: " + fallos
             }
         }
 
