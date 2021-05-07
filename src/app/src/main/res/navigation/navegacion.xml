@@ -3,16 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navegacion"
-    app:startDestination="@id/listaVocabulario">
+    app:startDestination="@id/colecciones">
 
     <fragment
-        android:id="@+id/listaVocabulario"
+        android:id="@+id/listaColecciones"
         android:name="com.example.nextandlearn.fragmentos.fragmentoListaVocabulario"
         android:label="fragment_fragmento_lista_vocabulario"
         tools:layout="@layout/fragmento_lista_vocabulario" >
         <action
             android:id="@+id/action_listaVocabulario_to_fragmentoMenuTestsVocabulario"
             app:destination="@id/fragmentoMenuTestsVocabulario" />
+        <argument
+            android:name="nombre_coleccion"
+            app:argType="string"
+            android:defaultValue=""
+            />
     </fragment>
     <fragment
         android:id="@+id/tests"
@@ -30,7 +35,7 @@
             />
         <action
             android:id="@+id/action_tests_to_listaVocabulario"
-            app:destination="@id/listaVocabulario" />
+            app:destination="@id/listaColecciones" />
 
     </fragment>
     <fragment
@@ -60,5 +65,14 @@
         <action
             android:id="@+id/action_fragmentoMenuTestsVocabulario_to_tests"
             app:destination="@id/tests" />
+    </fragment>
+    <fragment
+        android:id="@+id/colecciones"
+        android:name="com.example.nextandlearn.fragmentos.fragmentoNiveles"
+        android:label="fragmento_niveles"
+        tools:layout="@layout/fragmento_niveles" >
+        <action
+            android:id="@+id/action_colecciones_to_listaColecciones"
+            app:destination="@id/listaColecciones" />
     </fragment>
 </navigation>

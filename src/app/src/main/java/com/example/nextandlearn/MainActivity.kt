@@ -4,10 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.nextandlearn.fragmentos.fragmentoListaVocabularioDirections
-import com.example.nextandlearn.fragmentos.fragmentoMenuTestsVocabularioDirections
-import com.example.nextandlearn.fragmentos.fragmentoTests
-import com.example.nextandlearn.fragmentos.fragmentoTestsDirections
+import com.example.nextandlearn.fragmentos.*
 import com.example.nextandlearn.modelo.VocabularioDataBase
 import com.example.nextandlearn.modelo.obtenerBaseDatos
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -62,5 +59,10 @@ class MainActivity : AppCompatActivity() {
     //Del menu de tests o vocabulario a los tests
     fun fromTestsToColecciones(){
         findNavController(R.id.fragment2).navigate(fragmentoTestsDirections.actionTestsToListaVocabulario())
+    }
+
+    //De la lista de niveles a colecciones
+    fun fromNivelesToColecciones(nombre:String){
+        findNavController(R.id.fragment2).navigate(fragmentoNivelesDirections.actionColeccionesToListaColecciones(nombre))
     }
 }

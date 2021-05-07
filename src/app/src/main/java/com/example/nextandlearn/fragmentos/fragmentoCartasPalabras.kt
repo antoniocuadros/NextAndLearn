@@ -2,18 +2,11 @@ package com.example.nextandlearn.fragmentos
 
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Bundle
-import android.speech.tts.TextToSpeech
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.ImageButton
-import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
-import androidx.cardview.widget.CardView
-import androidx.navigation.NavArgs
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.example.nextandlearn.R
@@ -54,7 +47,7 @@ class fragmentoCartasPalabras : Fragment(){
             item_del_menu.setChecked(true)
         }
         else{
-            var item_del_menu: MenuItem = menu_inferior.findItem(R.id.listaVocabulario);
+            var item_del_menu: MenuItem = menu_inferior.findItem(R.id.colecciones);
             item_del_menu.setChecked(true)
         }
 

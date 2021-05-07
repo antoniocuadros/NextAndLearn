@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/listaVocabulario"
+        android:id="@+id/colecciones"
         android:icon="@drawable/vocabulario_icono"
         android:title="@string/Vocabulario"
         android:color="@color/black" android:state_checked="true"
