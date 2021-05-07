@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
 import android.widget.Toast
+import androidx.navigation.fragment.navArgs
 import com.example.nextandlearn.MainActivity
 import com.example.nextandlearn.R
 import com.example.nextandlearn.fragmentos.adapters.ColeccionAdapter
@@ -23,6 +24,7 @@ class fragmentoListaVocabulario : Fragment() {
     private lateinit var adapter:ColeccionAdapter
     private lateinit var colecciones:MutableList<Coleccion>
     private lateinit var cuadricula_coleccionVocabulario: GridView
+    private val argumentos:fragmentoListaVocabularioArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +68,14 @@ class fragmentoListaVocabulario : Fragment() {
     private fun inicializaListaColecciones(view:View){
         cuadricula_coleccionVocabulario = view.findViewById<GridView>(R.id.cuadricula_vocabulario)
         val db:VocabularioDataBase = obtenerBaseDatos(requireContext())
-        colecciones = db.coleccionDao.obtenerTodasColecciones()
+
+        if(argumentos.nombreColeccion != ""){
+            colecciones = db.coleccionDao.obtenerColeccionSegunNivel(argumentos.nombreColeccion)
+        }
+        else{
+            colecciones = db.coleccionDao.obtenerTodasColecciones()
+        }
+
 
         adapter = ColeccionAdapter(colecciones, requireContext())
         cuadricula_coleccionVocabulario.adapter = adapter
