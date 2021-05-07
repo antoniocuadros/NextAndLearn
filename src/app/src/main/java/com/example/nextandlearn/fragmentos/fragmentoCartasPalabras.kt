@@ -9,6 +9,7 @@ import android.speech.tts.TextToSpeech
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.ImageButton
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
@@ -33,6 +34,7 @@ class fragmentoCartasPalabras : Fragment(){
     private lateinit var animator:AnimatorSet
     private lateinit var animator2:AnimatorSet
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -41,7 +43,6 @@ class fragmentoCartasPalabras : Fragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragmento_cartas_palabras, container, false)
-
 
         //Como este fragmento se reutiliza en dos pantallas, debemos cuidar que item marcamos
         //en el menú inferior
@@ -74,6 +75,9 @@ class fragmentoCartasPalabras : Fragment(){
         }
         else{
             palabras = db.palabraDao.obtenerPalabrasMarcadas(true)
+            if(palabras.size == 0){
+                palabras.add(Palabra("none","none","none","none",true))
+            }
         }
 
 

@@ -9,8 +9,30 @@
     android:id="@+id/carta_palabra"
     app:cardBackgroundColor="@color/morado_pastel"
     >
-
     <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/carta_vacia"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:text="No hay cartas ahora mismo en la baraja"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/carta_normal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"

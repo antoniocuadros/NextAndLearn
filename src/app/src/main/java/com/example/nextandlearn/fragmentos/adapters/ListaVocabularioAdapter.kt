@@ -27,6 +27,8 @@ class ListaVocabularioAdapter(var palabras: MutableList<Palabra>, context: Conte
         val boton_eliminar = itemView.findViewById<ImageButton>(R.id.boton_eliminar)
         val boton_reproducir = itemView.findViewById<ImageButton>(R.id.boton_reproducir)
         val db:VocabularioDataBase = obtenerBaseDatos(context)
+        val carta_vacia = itemView.findViewById<LinearLayout>(R.id.carta_vacia)
+        val carta_normal = itemView.findViewById<LinearLayout>(R.id.carta_normal)
 
 
         //Para poder hacer click en los elementos
@@ -81,6 +83,11 @@ class ListaVocabularioAdapter(var palabras: MutableList<Palabra>, context: Conte
         if(palabras[position].marcada == true){
             holder.boton.visibility = View.GONE
             holder.boton_eliminar.visibility = View.VISIBLE
+        }
+
+        if(palabras.size == 1 && palabras[0].espanol == "none"){
+            holder.carta_normal.visibility = View.GONE
+            holder.carta_vacia.visibility = View.VISIBLE
         }
     }
 
