@@ -34,7 +34,7 @@
 
     </fragment>
     <fragment
-        android:id="@+id/fragmentoCartasPalabras"
+        android:id="@+id/mi_baraja"
         android:name="com.example.nextandlearn.fragmentos.fragmentoCartasPalabras"
         android:label="fragmento_cartas_palabras"
         tools:layout="@layout/fragmento_cartas_palabras" >
@@ -51,7 +51,7 @@
         tools:layout="@layout/fragmento_menu_tests_vocabulario" >
         <action
             android:id="@+id/action_fragmentoMenuTestsVocabulario_to_fragmentoCartasPalabras"
-            app:destination="@id/fragmentoCartasPalabras" />
+            app:destination="@id/mi_baraja" />
         <argument
             android:name="coleccion"
             app:argType="string"

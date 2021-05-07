@@ -24,6 +24,7 @@ class ListaVocabularioAdapter(var palabras: MutableList<Palabra>, context: Conte
         val  imagen = itemView.findViewById<ImageView>(R.id.imagen_palabra)
         val espanol = itemView.findViewById<TextView>(R.id.palabra_espanol)
         val boton = itemView.findViewById<ImageButton>(R.id.boton_anadir2)
+        val boton_eliminar = itemView.findViewById<ImageButton>(R.id.boton_eliminar)
         val boton_reproducir = itemView.findViewById<ImageButton>(R.id.boton_reproducir)
         val db:VocabularioDataBase = obtenerBaseDatos(context)
 
@@ -40,6 +41,16 @@ class ListaVocabularioAdapter(var palabras: MutableList<Palabra>, context: Conte
                 palabra.marcada = true
                 db.palabraDao.actualizaPalabra(palabra)
                 boton.visibility = View.GONE
+                boton_eliminar.visibility = View.VISIBLE
+            }
+
+            //Listener del botón que elimina de palabras a recordar
+            boton_eliminar.setOnClickListener{
+                var palabra = palabras[adapterPosition]
+                palabra.marcada = false
+                db.palabraDao.actualizaPalabra(palabra)
+                boton.visibility = View.VISIBLE
+                boton_eliminar.visibility = View.GONE
             }
 
 
@@ -69,6 +80,7 @@ class ListaVocabularioAdapter(var palabras: MutableList<Palabra>, context: Conte
         //Escondemos el botón en caso de que ya no sea necesario
         if(palabras[position].marcada == true){
             holder.boton.visibility = View.GONE
+            holder.boton_eliminar.visibility = View.VISIBLE
         }
     }
 

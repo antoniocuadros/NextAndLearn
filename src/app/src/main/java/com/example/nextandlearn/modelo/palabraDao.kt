@@ -66,5 +66,5 @@ interface palabraDao {
     Este método nos permite obtener una determinada palabra dando su atributo 'coleccion'.
      */
     @Query("SELECT * FROM Palabras WHERE marcada= :buscar")
-    fun obtenerPalabrasMarcadas(buscar:String):MutableList<Palabra>
+    fun obtenerPalabrasMarcadas(buscar:Boolean):MutableList<Palabra>
 }

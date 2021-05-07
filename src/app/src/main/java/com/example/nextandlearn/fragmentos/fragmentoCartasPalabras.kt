@@ -6,10 +6,8 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
@@ -22,6 +20,7 @@ import com.example.nextandlearn.fragmentos.adapters.ListaVocabularioAdapter
 import com.example.nextandlearn.modelo.Palabra
 import com.example.nextandlearn.modelo.VocabularioDataBase
 import com.example.nextandlearn.modelo.obtenerBaseDatos
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import me.relex.circleindicator.CircleIndicator3
 import java.util.*
 
@@ -43,14 +42,22 @@ class fragmentoCartasPalabras : Fragment(){
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragmento_cartas_palabras, container, false)
 
-        /*
 
-        var navigationView: BottomNavigationView = requireActivity().findViewById(R.id.menu_inferior);
-        var menu:Menu = navigationView.getMenu();
-        var menuItem:MenuItem = menu.findItem(R.id.mi_baraja+);
-        menuItem.setChecked(true)
+        //Como este fragmento se reutiliza en dos pantallas, debemos cuidar que item marcamos
+        //en el menú inferior
+        var navegacion: BottomNavigationView = requireActivity().findViewById(R.id.menu_inferior);
+        var menu_inferior: Menu = navegacion.getMenu();
 
-         */
+        if(argumentos.coleccion == ""){
+            var item_del_menu: MenuItem = menu_inferior.findItem(R.id.mi_baraja);
+            item_del_menu.setChecked(true)
+        }
+        else{
+            var item_del_menu: MenuItem = menu_inferior.findItem(R.id.listaVocabulario);
+            item_del_menu.setChecked(true)
+        }
+
+
 
         //Asignamos el valor al animator
         animator = AnimatorInflater.loadAnimator(context, R.animator.giro_carta_animator) as AnimatorSet
@@ -62,7 +69,13 @@ class fragmentoCartasPalabras : Fragment(){
 
         //Obtenemos las palabras asociadas a la colección pasada
         var db: VocabularioDataBase = obtenerBaseDatos(requireContext())
-        palabras = db.palabraDao.obtenerPalabraSegunColeccion(argumentos.coleccion)
+        if(argumentos.coleccion != ""){
+            palabras = db.palabraDao.obtenerPalabraSegunColeccion(argumentos.coleccion)
+        }
+        else{
+            palabras = db.palabraDao.obtenerPalabrasMarcadas(true)
+        }
+
 
         //Definimos el adapter y le pasamos las palabras
         //Adicionalmente definimos el clickListener
