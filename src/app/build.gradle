@@ -71,6 +71,6 @@ dependencies {
     implementation 'me.relex:circleindicator:2.1.6'
 
     //Gráficos
-    implementation 'com.github.AAChartModel:AAChartCore-Kotlin:-SNAPSHOT'
+    implementation 'com.github.AnyChart:AnyChart-Android:0.0.3'
 
 }
