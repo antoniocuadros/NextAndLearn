@@ -61,10 +61,13 @@ class fragmentoCartasPalabras : Fragment(){
         slider_palabras = view.findViewById<ViewPager2>(R.id.slider_palabras_ly)
         indicador_slider = view.findViewById<CircleIndicator3>(R.id.indicador_slider)
 
+        var modo = 0
+
         //Obtenemos las palabras asociadas a la colección pasada
         var db: VocabularioDataBase = obtenerBaseDatos(requireContext())
         if(argumentos.coleccion != ""){
             palabras = db.palabraDao.obtenerPalabraSegunColeccion(argumentos.coleccion)
+            modo = 1
         }
         else{
             palabras = db.palabraDao.obtenerPalabrasMarcadas(true)
@@ -76,7 +79,7 @@ class fragmentoCartasPalabras : Fragment(){
 
         //Definimos el adapter y le pasamos las palabras
         //Adicionalmente definimos el clickListener
-        slider_palabras.adapter = ListaVocabularioAdapter(palabras, requireContext()){palabra:Palabra, vista:View ->
+        slider_palabras.adapter = ListaVocabularioAdapter(palabras, modo, requireContext()){palabra:Palabra, vista:View ->
             var palabra_espanol_vista =  vista.findViewById<TextView>(R.id.palabra_espanol)
             var boton_reproducir_vista = vista.findViewById<ImageButton>(R.id.boton_reproducir)
 

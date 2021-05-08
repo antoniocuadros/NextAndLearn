@@ -18,11 +18,12 @@ import org.w3c.dom.Text
 import java.util.*
 
 
-class ListaVocabularioAdapter(var palabras: MutableList<Palabra>, context: Context, val clickListener: (Palabra, View) -> Unit): RecyclerView.Adapter<ListaVocabularioAdapter.Pager2ViewHolder>(), TextToSpeech.OnInitListener{
+class ListaVocabularioAdapter(var palabras: MutableList<Palabra>, modo:Int, context: Context, val clickListener: (Palabra, View) -> Unit): RecyclerView.Adapter<ListaVocabularioAdapter.Pager2ViewHolder>(), TextToSpeech.OnInitListener{
     private var context = context
+    private var modo = modo
     var reproductor = TextToSpeech(context, this)
 
-    inner class Pager2ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class Pager2ViewHolder(itemView: View, modo:Int): RecyclerView.ViewHolder(itemView) {
         val  imagen = itemView.findViewById<ImageView>(R.id.imagen_palabra)
         val espanol = itemView.findViewById<TextView>(R.id.palabra_espanol)
         val boton = itemView.findViewById<ImageButton>(R.id.boton_anadir2)
@@ -55,16 +56,19 @@ class ListaVocabularioAdapter(var palabras: MutableList<Palabra>, context: Conte
                 db.palabraDao.actualizaPalabra(palabra)
                 boton.visibility = View.VISIBLE
                 boton_eliminar.visibility = View.GONE
-                palabras.removeAt(adapterPosition)
-                notifyItemRemoved(adapterPosition)
-                notifyItemRangeChanged(adapterPosition, palabras.size)
-                notifyDataSetChanged()
-                var indicador_num = it.rootView.findViewById<CircleIndicator3>(R.id.indicador_slider)
-                indicador_num.createIndicators(palabras.size, adapterPosition+1)
+                if(modo == 0){
+                    palabras.removeAt(adapterPosition)
+                    notifyItemRemoved(adapterPosition)
+                    notifyItemRangeChanged(adapterPosition, palabras.size)
+                    notifyDataSetChanged()
+                    var indicador_num = it.rootView.findViewById<CircleIndicator3>(R.id.indicador_slider)
+                    indicador_num.createIndicators(palabras.size, adapterPosition+1)
 
-                if(palabras.size == 0){
-                    palabras.add(Palabra("none","none","none","none",true))
+                    if(palabras.size == 0){
+                        palabras.add(Palabra("none","none","none","none",true))
+                    }
                 }
+
             }
 
 
@@ -79,7 +83,7 @@ class ListaVocabularioAdapter(var palabras: MutableList<Palabra>, context: Conte
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListaVocabularioAdapter.Pager2ViewHolder {
-        return Pager2ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.palabra_item, parent, false))
+        return Pager2ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.palabra_item, parent, false),modo)
     }
 
     override fun getItemCount(): Int {
