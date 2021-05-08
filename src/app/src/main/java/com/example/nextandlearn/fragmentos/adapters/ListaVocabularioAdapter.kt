@@ -8,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.example.nextandlearn.R
 import com.example.nextandlearn.modelo.Palabra
 import com.example.nextandlearn.modelo.VocabularioDataBase
 import com.example.nextandlearn.modelo.obtenerBaseDatos
+import me.relex.circleindicator.CircleIndicator3
 import org.w3c.dom.Text
 import java.util.*
 
@@ -53,6 +55,16 @@ class ListaVocabularioAdapter(var palabras: MutableList<Palabra>, context: Conte
                 db.palabraDao.actualizaPalabra(palabra)
                 boton.visibility = View.VISIBLE
                 boton_eliminar.visibility = View.GONE
+                palabras.removeAt(adapterPosition)
+                notifyItemRemoved(adapterPosition)
+                notifyItemRangeChanged(adapterPosition, palabras.size)
+                notifyDataSetChanged()
+                var indicador_num = it.rootView.findViewById<CircleIndicator3>(R.id.indicador_slider)
+                indicador_num.createIndicators(palabras.size, adapterPosition+1)
+
+                if(palabras.size == 0){
+                    palabras.add(Palabra("none","none","none","none",true))
+                }
             }
 
 
