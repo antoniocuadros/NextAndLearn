@@ -2,5 +2,13 @@
   {
     "nombre": "Pre A1 Starters",
     "imagen": "prea1"
+  },
+  {
+    "nombre": "A1 Movers",
+    "imagen": "a1"
+  },
+  {
+    "nombre": "A2 Flyers",
+    "imagen": "a2"
   }
 ]
