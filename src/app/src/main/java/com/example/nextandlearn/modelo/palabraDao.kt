@@ -67,4 +67,10 @@ interface palabraDao {
      */
     @Query("SELECT * FROM Palabras WHERE marcada= :buscar")
     fun obtenerPalabrasMarcadas(buscar:Boolean):MutableList<Palabra>
+
+    /*
+    Este método se encarga de obtener el número de palabras de una coleccion
+     */
+    @Query("SELECT count(*) FROM Palabras WHERE coleccion= :buscar")
+    fun obtenerNumPalabrasColeccion(buscar: String):Int
 }
