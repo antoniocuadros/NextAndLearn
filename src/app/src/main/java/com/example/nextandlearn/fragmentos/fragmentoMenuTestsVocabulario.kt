@@ -29,14 +29,27 @@ class fragmentoMenuTestsVocabulario : Fragment() {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragmento_menu_tests_vocabulario, container, false)
 
+
+        //Vinculamos las vistas con las variables
+        inicializaVistas(view)
+
+        //Anadimos los listeners de los botones
+        anadeListenersBotonoes()
+
+
+
+        return view
+    }
+
+    private fun inicializaVistas(view:View){
         boton_normal = view.findViewById(R.id.boton_normal)
         boton_listening = view.findViewById(R.id.boton_listening)
         boton_writing = view.findViewById(R.id.boton_writing)
         boton_speaking = view.findViewById(R.id.boton_speaking)
-
-
         boton_vocabulario = view.findViewById(R.id.carta_voc)
+    }
 
+    private fun anadeListenersBotonoes(){
         boton_vocabulario.setOnClickListener {
             var coleccion = argumentos.coleccion
             (activity as MainActivity).onVocabularioSelected(coleccion)
@@ -58,7 +71,5 @@ class fragmentoMenuTestsVocabulario : Fragment() {
             var coleccion = argumentos.coleccion
             (activity as MainActivity).onTestsSelected(coleccion, 4)
         }
-
-        return view
     }
 }

@@ -231,7 +231,7 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
                 num_aciertos_ly.text = "Aciertos: " + aciertos
                 num_fallos_ly.text = "Fallos: " + fallos
 
-                var porcentajes:MutableList<Int> = mutableListOf()
+                var porcentajes:MutableList<Int>
                 porcentajes = obtenerPorcentajes()
                 var texto1 = "Puntuación máxima: " + porcentajes[1].toString()
                 var texto2 = "Puntuación actual: " + porcentajes[0].toString()
@@ -289,7 +289,7 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
             }
         }
 
-        var porcentajes:MutableList<Int> = mutableListOf()
+        var porcentajes:MutableList<Int>
         porcentajes = obtenerPorcentajes()
         var texto1 = "Puntuación máxima: " + porcentajes[1].toString() + "%"
         var texto2 = "Puntuación actual: " + porcentajes[0].toString() + "%"
