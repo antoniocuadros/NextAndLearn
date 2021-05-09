@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
     fun fromTestsToColecciones(){
         findNavController(R.id.fragment2).navigate(fragmentoTestsDirections.actionTestsToListaVocabulario())
     }
-    
+
     /*
         Esta función nos sirve para navegar de la lista de niveles a colecciones
      */
