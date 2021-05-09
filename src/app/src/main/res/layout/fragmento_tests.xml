@@ -49,36 +49,49 @@
                 android:layout_marginLeft="60dp"
                 android:layout_marginRight="60dp"
                 android:layout_marginBottom="10dp"
-                android:background="@color/azul_claro"
                 android:orientation="vertical"
                 >
-                <TextView
-                    android:id="@+id/texto_porcentaje"
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/white"
-                    android:textSize="15dp"
+                    android:layout_height="match_parent"
+                    android:elevation="50dp"
+                    app:cardCornerRadius="50dp"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/texto_porcentaje"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
 
-                    android:padding="4dp"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    />
-                <TextView
-                    android:id="@+id/texto_porcentaje_actual"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/white"
-                    android:textSize="15dp"
-                    android:padding="4dp"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    />
+                            android:padding="4dp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            />
+                        <TextView
+                            android:id="@+id/texto_porcentaje_actual"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
+                            android:padding="4dp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
             </LinearLayout>
 
             <TextView
