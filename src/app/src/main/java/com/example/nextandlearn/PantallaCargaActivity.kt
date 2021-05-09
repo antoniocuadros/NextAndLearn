@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import kotlin.system.exitProcess
 
 class PantallaCargaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,6 +15,7 @@ class PantallaCargaActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             var intent_main_activity = Intent(this, MainActivity::class.java)
             startActivity(intent_main_activity)
+            finish()
         }, 1000)
 
     }

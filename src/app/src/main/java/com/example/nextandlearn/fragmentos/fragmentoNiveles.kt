@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
+import androidx.activity.addCallback
 import com.example.nextandlearn.MainActivity
 import com.example.nextandlearn.R
 import com.example.nextandlearn.fragmentos.adapters.ColeccionAdapter
@@ -14,6 +15,7 @@ import com.example.nextandlearn.modelo.Coleccion
 import com.example.nextandlearn.modelo.Nivel
 import com.example.nextandlearn.modelo.VocabularioDataBase
 import com.example.nextandlearn.modelo.obtenerBaseDatos
+import kotlin.system.exitProcess
 
 class fragmentoNiveles : Fragment() {
     private lateinit var adapter: NivelAdapter
@@ -23,6 +25,9 @@ class fragmentoNiveles : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        requireActivity().onBackPressedDispatcher.addCallback(this){
+            exitProcess(0)
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
