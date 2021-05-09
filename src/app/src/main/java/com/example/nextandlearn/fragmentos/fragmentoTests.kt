@@ -21,8 +21,50 @@ import com.example.nextandlearn.modelo.obtenerBaseDatos
 import java.util.*
 import kotlin.random.Random
 
-
+/*
+    Este fragmento dota de funcionalidad a la vista que muestra todos los tests de una determinada
+    colección pudiendo ser de tipo Normal, Listening, Writing y Speaking.
+ */
 class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
+    /*
+        Los atributos de esta clase son:
+            -> argumentos: Atributo de tipo fragmentoTestsArgs utilizado para recibir datos desde otros fragmentos.
+            -> vocabulario: Atributo de tipo MutableList<Palabra> que contiene la lista de palabras que van a ser preguntadas en el test.
+            -> db: Atributo de tipo VocabularioDataBase que nos permitirá acceder a la base de datos.
+            -> pregunta: Atributo de tipo Int que nos indica por que pregunta del test va un determinado usuario respondiendo.
+            -> numero_preguntas: Atributo de tipo Int que indica el número total de preguntas del test.
+            -> opcion_elegida: Atributo de tipo Int indica la opción que el usuario ha seleccionado como correcta.
+            -> aciertos: Atributo de tipo Int que representa número de aciertos acumulados en este intento del test.
+            -> fallos: Atributo de tipo Int que representa número de fallos acumulados en este intento del test.
+            -> opciones: Atributo de tipo MutableList<Palabra> lista de cuatro palabras que son opciones a elegir como correctas en un test, solo hay una correcta.
+            -> reproductor: Atributo de tipo TextToSpeech que nos permite escuchar una determinada palabra en inglés para el test de tipo Listening.
+            -> opcion: Atributo de tipo Int que indica que tipo de test se va a realizar, Normal, Listening, Writing, Speaking.
+            -> enunciado: Atributo de tipo TextView  que representa el enunciado de la pregunta.
+            -> imagen_opcion_1: Atributo de tipo ImageView que representa la imagen de la palabra de la opción 1.
+            -> text_opcion_1: Atributo de tipo TextView que representa la palabra de la opción 1.
+            -> imagen_opcion_2: Atributo de tipo ImageView que representa la imagen de la palabra de la opción 2.
+            -> text_opcion_2: Atributo de tipo TextView que representa la palabra de la opción 2.
+            -> imagen_opcion_3: Atributo de tipo ImageView que representa la imagen de la palabra de la opción 3.
+            -> text_opcion_3: Atributo de tipo TextView que representa la palabra de la opción 3.
+            -> imagen_opcion_4: Atributo de tipo ImageView que representa la imagen de la palabra de la opción 4.
+            -> text_opcion_4: Atributo de tipo TextView que representa la palabra de la opción 4.
+            -> boton_siguiente_test: Atributo de tipo Button que representa el botón para pasar a la siguiente pregunta.
+            -> opcion_1: Atributo de tipo LinearLayout que es utilizado para asignarle un clickListener y seleccionar la opción 1.
+            -> opcion_2: Atributo de tipo LinearLayout que es utilizado para asignarle un clickListener y seleccionar la opción 2.
+            -> opcion_3: Atributo de tipo LinearLayout que es utilizado para asignarle un clickListener y seleccionar la opción 3.
+            -> opcion_4: Atributo de tipo LinearLayout que es utilizado para asignarle un clickListener y seleccionar la opción 4.
+            -> layout_test: Atributo de tipo LinearLayout que representa el layout del test completo, útil para ocultarlo y mostrar si una opción es o no correcta.
+            -> layout_resultado: Atributo de tipo LinearLayout que representa el layout del resultado de una pregunta, útil para ocultarlo y mostrar la siguiente pregunta.
+            -> num_aciertos_ly: Atributo de tipo TextView que es utilizado para mostrar el número de aciertos al terminar el test.
+            -> num_fallos_ly:Atributo de tipo TextView que es utilizado para mostrar el número de fallos al terminar el test.
+            -> boton_sonido: Atributo de tipo ImageButton que representa el botón para escuchar una palabra en inglés en el Listening.
+            -> input_test: Atributo de tipo EditText que representa la caja donde escribir en el Writing.
+            -> boton_grabar: Atributo de tipo ImageButton que representa el botón para capturar voz en el Speaking.
+            -> texto_porcentaje_actual: Atributo de tipo TextView que representa en el text actual el porcentaje de aciertos.
+            -> texto_porcentaje: Atributo de tipo TextView que representa en el conjunto de todos los tests de este tipo en esta colección el porcentaje de aciertos.
+            -> boton_siguiente_acierto_fallo: Atributo de tipo Button que es utilizado para pasar a la siguiente pregunta desde la pantalla de acierto o fallo.
+            -> texto_acierto_fallo: Atributo de tipo TextView que indica si hemos acertado o fallado la pregunta.
+     */
     private val argumentos:fragmentoTestsArgs by navArgs()
     private lateinit var vocabulario:MutableList<Palabra>
     private lateinit var db:VocabularioDataBase
@@ -63,40 +105,65 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
     private lateinit var texto_acierto_fallo:TextView
 
 
-
+    /*
+        El método onCreate de cualquier Fragment es llamado cuando se crea inicialmente el fragmento,
+        se llama al método onCreate de la clase superior, Fragment para crear el fragmento.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
 
+    /*
+    El método onCreateView de un fragmento crea y devuelve la jerarquía de la vista asociada con el
+    fragmento.
+    Adicionalmente de forma específica a este fragmento se realizan los siguientes pasos:
+        -> Paso 1): Se infla y obtiene la vista
+        -> Paso 2): Se obtiene el tipo de test a realizar y se almacena que tipo de test se va a realizar.
+        -> Paso 3): Se vinculan las vistas con los atributos correspondientes.
+        -> Paso 4): Se obtienen las palabras que van a ser preguntadas en el test.
+        -> Paso 5): Se obtienen las posibles opciones para la pregunta actual y el enunciado, solo una correcta.
+        -> Paso 6): Se añaden las opciones a la vista.
+        -> Paso 7): Se añaden los listeners para que el usuario pueda hacer click
+        -> Paso 8): Se gestiona el botón para pasar a la siguiente pregunta que comprobará si se ha acertado o fallado
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Paso 1
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragmento_tests, container, false)
 
+        // Paso 2
         opcion = argumentos.opcion
         reproductor = TextToSpeech(context, this)
 
+        // Paso 3
         //Inicializamos las vistas
         inicializa_vistas(view)
 
+        // Paso 4
         //Obtenemos todas las palabras de la coleccion, se almacenan en la variable de clase
         obtener_palabras()
 
+        // Paso 5
         //Obtenemos las opciones
         opciones = generaOpciones()
 
+        // Paso 6
         //Las añadimos a la vista
         anadeOpcionesVista()
 
+        // Paso 7
         // Añadimos los listeners de los botones de las opciones
         anadeListenersOpciones()
 
+        // Paso 8
         // Gestionamos el comportamiento del botón siguiente
         gestionaBotonSiguiente()
 
+        // Paso 9
         return view
     }
 
