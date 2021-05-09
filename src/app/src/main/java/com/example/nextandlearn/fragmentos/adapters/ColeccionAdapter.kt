@@ -14,7 +14,7 @@ import com.example.nextandlearn.modelo.Palabra
 
 
 /*
-Esta clase representa el adaptador de la lista de colección de vocabulario. Este adaptador se encargará
+Esta clase representa el adaptador de la lista de colecciones de vocabulario. Este adaptador se encargará
 de rellenar la vista de la lista de colecciones de vocabulario adaptando cada colección a un item según el
 layout 'coleccion_item' en forma de carta e irá añadiendo a la vista dichas cartas a la vista
 que contiene la lista de colecciones de vocabulario.

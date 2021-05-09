@@ -17,14 +17,43 @@ import me.relex.circleindicator.CircleIndicator3
 import org.w3c.dom.Text
 import java.util.*
 
+    /*
+        Esta clase representa el adaptador de la lista de palabras que se muestran como cartas.
+        Este adaptador se encargará de rellenar la vista de la lista de palabras
+        adaptando cada colección a un item según el layout 'palabra_item' en forma de carta
+        e irá añadiendo a la vista dichas cartas a la vista que contiene la lista de palabras.
+     */
+    /*
+        Los atributos de esta clase son:
+        -> context: Atributo de tipo Context que representa el contexto del fragmento.
+        -> modo: Atributo de tipo Int que nos indica si estamos en el apartado mi baraja o estamos en el apartado de vocabulario de una colección.
+        -> reproductor: Atributo de tipo TextToSpeech que es utilizado para leer las palabras en inglés.
 
+     */
 class ListaVocabularioAdapter(var palabras: MutableList<Palabra>, modo:Int, context: Context, val clickListener: (Palabra, View) -> Unit): RecyclerView.Adapter<ListaVocabularioAdapter.Pager2ViewHolder>(), TextToSpeech.OnInitListener{
     private var context = context
     private var modo = modo
     var reproductor = TextToSpeech(context, this)
 
+        /*
+            Esta clase es una clase de tipo inner class, lo que representa que cualquier atributo
+            o función de la clase en la que está incluida, en este caso ListaVocabularioAdapter
+            puede ser accedido desde dentro. Esta clase es necesaria para poder acceder a cada
+            elemento de cada item de la vista y poder definir eventos sobre los mismos.
+         */
     inner class Pager2ViewHolder(itemView: View, modo:Int): RecyclerView.ViewHolder(itemView) {
-        val  imagen = itemView.findViewById<ImageView>(R.id.imagen_palabra)
+            /*
+                Los atributos de esta clase son:
+                    -> imagen: Atributo de tipo ImageView, que representa la imagen que acompaña a cada palabra.
+                    -> espanol: Atributo de tipo TextView, que representa la palabra tanto en español como en inglés.
+                    -> boton: Atributo de tipo ImageButton, que representa el botón de añadir una carta a mi baraja.
+                    -> boton_eliminar: Atributo de tipo ImageButton, que representa el botón de eliminar una carta de mi baraja.
+                    -> boton_reproducir: Atributo de tipo ImageButton, que representa el botón que se utiliza para escuchar la pronunciación de la palabra en inglés.
+                    -> db: Atributo de tipo VocabularioDataBase que nos permite acceder a los datos de la base de datos.
+                    -> carta_vacia: Atributo de tipo LinearLayout, que representa la carta cuando no hay elementos, útil para cuando no hay cartas en mi baraja.
+                    -> carta_normal: Atributo de tipo LinearLayout, que representa la carta completa cuando hay una o más palabras.
+             */
+        val imagen = itemView.findViewById<ImageView>(R.id.imagen_palabra)
         val espanol = itemView.findViewById<TextView>(R.id.palabra_espanol)
         val boton = itemView.findViewById<ImageButton>(R.id.boton_anadir2)
         val boton_eliminar = itemView.findViewById<ImageButton>(R.id.boton_eliminar)
@@ -35,6 +64,15 @@ class ListaVocabularioAdapter(var palabras: MutableList<Palabra>, modo:Int, cont
 
 
         //Para poder hacer click en los elementos
+            /*
+                El método init se ejecuta cuando se crea un objeto de esta clase y es utilizado
+                para definir los listeners de los elementos de cada carta que representa una palabra.
+                De esta forma se definen los  listeners de los siguientes elementos:
+                    -> itemView: Un clickListener sobre cada item completo, es decir la carta completa, es utilizado para al hacer click voltear la carta y cambiar el idioma.
+                    -> boton: Un clickListener sobre el botón de añadir a mi baraja para añadir la palabra a mi baraja.
+                    -> boton_eliminar: Un clickListener sobre el botón de eliminar de mi baraja para eliminar la palabra de mi baraja.
+                    -> boton_reproducir:  Un clickListener sobre el botón de reproducir para reproducir la palabra en inglés.
+             */
         init{
             itemView.setOnClickListener{
                 clickListener(palabras[adapterPosition], it)
@@ -81,15 +119,25 @@ class ListaVocabularioAdapter(var palabras: MutableList<Palabra>, modo:Int, cont
 
 
     }
-
+    /*
+        En este método se infla la vista de cada item, pero aún sin asignar el contenido
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListaVocabularioAdapter.Pager2ViewHolder {
         return Pager2ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.palabra_item, parent, false),modo)
     }
 
+    /*
+        Método que devuelve el tamaño de la lista de palabras.
+     */
     override fun getItemCount(): Int {
         return palabras.size
     }
 
+    /*
+        Este método se encarga de dotar de contenido a cada item que se añade al RecyclerView de palabras.
+        En este caso se añade el contenido a la imagen y texto de la palbra. Adicionalmente se comprueba
+        si no hay ninguna palabra para añadir una carta que indique este caso.
+     */
     override fun onBindViewHolder(holder: ListaVocabularioAdapter.Pager2ViewHolder, position: Int) {
         var identificador_imagen = context.resources.getIdentifier(palabras[position].imagen, "drawable", "com.example.nextandlearn")
         holder.imagen.setImageResource(identificador_imagen)
@@ -105,14 +153,12 @@ class ListaVocabularioAdapter(var palabras: MutableList<Palabra>, modo:Int, cont
             holder.carta_normal.visibility = View.GONE
             holder.carta_vacia.visibility = View.VISIBLE
         }
-    }
-
-    //No permitimos que sea reciclable para evitar que al esconder un botón de problemas
-    override fun onBindViewHolder(holder: Pager2ViewHolder, position: Int, payloads: MutableList<Any>) {
-        super.onBindViewHolder(holder, position, payloads)
         holder.setIsRecyclable(false)
     }
-    
+
+    /*
+        Este método sobrecarga el método onInit de la clase TextToSpeech y es utilizado para definir el lenguaje del reproductor, en este caso inglés.
+     */
     override fun onInit(status: Int) {
         if(status == TextToSpeech.SUCCESS){
             reproductor.language = Locale.UK
