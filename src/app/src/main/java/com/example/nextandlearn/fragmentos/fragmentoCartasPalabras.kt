@@ -18,27 +18,55 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import me.relex.circleindicator.CircleIndicator3
 import java.util.*
 
-
+/*
+    Este fragmento dota de funcionalidad a la vista que muestra una lista de palabras en forma de cartas.
+ */
 class fragmentoCartasPalabras : Fragment(){
+    /*
+        Los atributos de esta clase son:
+            -> argumentos: Variable de tipo fragmentoCartasPalabrasArgs utilizado para recibir datos desde otros fragmentos.
+            -> slider_palabras: Variable de tipo ViewPager2 que contiene un slider de cartas que representan cada palabra.
+            -> indicador_slider: Variable de tipo CircleIndicator3 que contiene un indicador del número de palabras.
+            -> palabras: Variable de tipo MutableList<Palabra> que contiene la lista de objetos de tipo Palabra a mostrar.
+            -> animator: Variable de tipo AnimatorSet utilizado para mostrar una animación de giro de carta.
+            -> animator2: Variable de tipo AnimatorSet utilizado para mostrar una animación de giro de carta al revés una vez realizado el giro.
+     */
     private val argumentos:fragmentoCartasPalabrasArgs by navArgs()
     private lateinit var slider_palabras: ViewPager2
     private lateinit var indicador_slider: CircleIndicator3
     private lateinit var palabras:MutableList<Palabra>
     private lateinit var animator:AnimatorSet
     private lateinit var animator2:AnimatorSet
+    private var modo = 0
 
-
+    /*
+    El método onCreate de cualquier Fragment es llamado cuando se crea inicialmente el fragmento,
+    se llama al método onCreate de la clase superior, Fragment para crear el fragmento.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
 
+    /*
+    El método onCreateView de un fragmento crea y devuelve la jerarquía de la vista asociada con el
+    fragmento.
+    Adicionalmente de forma específica a este fragmento se realizan los siguientes pasos:
+        -> 1) Se infla la vista.
+        -> 2) Se comprueba desde donde venimos para ver que item del menú inferior debemos marcar.
+              Es necesario comprobarlo ya que este fragmento se utiliza tanto en el apartado para
+              repasar vocabulario como en el apartado mi baraja.
+        -> 3) Se asignan los valores a los animators y a las vistas del slider y del indicador de palabras.
+        -> 4) Se obtienen las palabras que se van a mostrar. Si no hay palabras a mostrar se añade una carta
+              que indica que no hay palabras ahora mismo, útil para el apartado mi baraja.
+        -> 5) Se inicializa el contenido de la vista.
+        -> 6) Se devuelve la vista.
+     */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
+        // Paso 1
         val view =  inflater.inflate(R.layout.fragmento_cartas_palabras, container, false)
 
-        //Como este fragmento se reutiliza en dos pantallas, debemos cuidar que item marcamos
-        //en el menú inferior
+        // Paso 2
         var navegacion: BottomNavigationView = requireActivity().findViewById(R.id.menu_inferior);
         var menu_inferior: Menu = navegacion.getMenu();
 
@@ -52,7 +80,7 @@ class fragmentoCartasPalabras : Fragment(){
         }
 
 
-
+        //Paso 3
         //Asignamos el valor al animator
         animator = AnimatorInflater.loadAnimator(context, R.animator.giro_carta_animator) as AnimatorSet
         animator2 = AnimatorInflater.loadAnimator(context, R.animator.giro_reverse_animator) as AnimatorSet
@@ -61,8 +89,26 @@ class fragmentoCartasPalabras : Fragment(){
         slider_palabras = view.findViewById<ViewPager2>(R.id.slider_palabras_ly)
         indicador_slider = view.findViewById<CircleIndicator3>(R.id.indicador_slider)
 
-        var modo = 0
 
+        // Paso 4
+        obtenerPalabras()
+
+        //Paso 5
+        inicializaContenido()
+
+        //Paso 6
+        return view
+    }
+
+    /*
+        Este método se encarga de obtener las palabras de la base de datos en función de la colección
+        seleccionada. Si el string que identifica la colección que es recibido por parámetros en el fragmento
+        no es vacío quiere decir que se ha seleccionado una colección y que venimos del fragmento de lista
+        de colecciones, entonces mostramos las palabras de dicha colección. En caso de que el string sea vacío
+        quiere decir que estamos en el apartado mi baraja y debemos obtener las palabras que se han marcado
+        para ser añadidas a mi baraja.
+     */
+    private fun obtenerPalabras(){
         //Obtenemos las palabras asociadas a la colección pasada
         var db: VocabularioDataBase = obtenerBaseDatos(requireContext())
         if(argumentos.coleccion != ""){
@@ -75,8 +121,15 @@ class fragmentoCartasPalabras : Fragment(){
                 palabras.add(Palabra("none","none","none","none",true))
             }
         }
+    }
 
-
+    /*
+        Este método se encarga de inicializar el adapter del slider pasándole el conjunto de palabras
+        que se desean mostrar. Adicionalmente se establece el comportamiento del clicklistener de
+        la carta que contiene el vocabulario. El comportamiento de este listener es mostrar o bien
+        la palabra en inglés o en español en función del estado previo y añadir las animaciones.
+     */
+    private fun inicializaContenido(){
         //Definimos el adapter y le pasamos las palabras
         //Adicionalmente definimos el clickListener
         slider_palabras.adapter = ListaVocabularioAdapter(palabras, modo, requireContext()){palabra:Palabra, vista:View ->
@@ -106,14 +159,5 @@ class fragmentoCartasPalabras : Fragment(){
         }
         slider_palabras.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         indicador_slider.setViewPager(slider_palabras)
-
-
-        return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
     }
 }
