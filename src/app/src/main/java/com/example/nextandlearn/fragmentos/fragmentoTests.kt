@@ -630,6 +630,10 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
         }
     }
 
+    /*
+        Sobrecarga del método de la clase TextToSpeech utilizado para definir el idioma en el que se
+        va a capturar la voz.
+     */
     override fun onInit(status: Int) {
         if(status == TextToSpeech.SUCCESS){
             reproductor.language = Locale.UK
