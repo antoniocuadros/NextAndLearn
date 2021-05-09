@@ -5,6 +5,10 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
+/*
+    En esta interfaz se han definido los métodos necesarios para poder trabajar con los datos de
+    la tabla Niveles.
+ */
 @Dao
 interface nivelDao {
     /*
