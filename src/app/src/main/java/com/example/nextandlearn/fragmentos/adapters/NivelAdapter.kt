@@ -13,10 +13,14 @@ import com.example.nextandlearn.modelo.Coleccion
 import com.example.nextandlearn.modelo.Nivel
 
 /*
-Esta clase representa el adaptador de la lista de niveles. Este adaptador se encargará
-de rellenar la vista de la lista de niveles adaptando cada nivel a un item según el
-layout 'nivel_item' en forma de carta e irá añadiendo a la vista dichas cartas a la vista
-que contiene la lista de niveles.
+    Esta clase representa el adaptador de la lista de niveles. Este adaptador se encargará
+    de rellenar la vista de la lista de niveles adaptando cada nivel a un item según el
+    layout 'nivel_item' en forma de carta e irá añadiendo a la vista dichas cartas a la vista
+    que contiene la lista de niveles.
+ */
+/*
+    El atributo de esta clase es:
+        -> context: Atributo de tipo Context que representa el contexto del fragmento.
  */
 class NivelAdapter(var listaNiveles:MutableList<Nivel>, context: Context): BaseAdapter(){
     var context = context
@@ -60,23 +64,23 @@ class NivelAdapter(var listaNiveles:MutableList<Nivel>, context: Context): BaseA
     }
 
     /*
-    Para una determinada posición dada como argumento se devuelve
-    la colección asociada a dicha posición de la lista de colecciones.
+        Para una determinada posición dada como argumento se devuelve
+        la colección asociada a dicha posición de la lista de colecciones.
      */
     override fun getItem(position: Int): Any {
         return listaNiveles[position]
     }
 
     /*
-    En este método, dada una posición como parámetro se devuelve un identificador,
-    en este caso al ser una lista, es la misma posición.
+        En este método, dada una posición como parámetro se devuelve un identificador,
+        en este caso al ser una lista, es la misma posición.
      */
     override fun getItemId(position: Int): Long {
         return position.toLong()
     }
 
     /*
-    Este método devuelve la longitud de la lista de colecciones.
+        Este método devuelve la longitud de la lista de colecciones.
      */
     override fun getCount(): Int {
         return listaNiveles.size
