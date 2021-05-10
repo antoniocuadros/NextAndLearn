@@ -40,8 +40,7 @@ class fragmentoCartasPalabras : Fragment(){
     private var modo = 0
 
     /*
-    El método onCreate de cualquier Fragment es llamado cuando se crea inicialmente el fragmento,
-    se llama al método onCreate de la clase superior, Fragment para crear el fragmento.
+    Se llama al método onCreate de la clase superior con el objetivo de crear el fragmento.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,9 +48,7 @@ class fragmentoCartasPalabras : Fragment(){
     }
 
     /*
-    El método onCreateView de un fragmento crea y devuelve la jerarquía de la vista asociada con el
-    fragmento.
-    Adicionalmente de forma específica a este fragmento se realizan los siguientes pasos:
+    Se realizan los siguientes pasos:
         -> 1) Se infla la vista.
         -> 2) Se comprueba desde donde venimos para ver que item del menú inferior debemos marcar.
               Es necesario comprobarlo ya que este fragmento se utiliza tanto en el apartado para

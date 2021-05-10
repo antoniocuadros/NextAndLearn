@@ -16,6 +16,7 @@ import java.io.InputStream
     las tablas:
         - Colecciones
         - Palabras
+        - Niveles
  */
 
 @Database(entities = [Coleccion::class, Palabra::class, Nivel::class], version = 1)

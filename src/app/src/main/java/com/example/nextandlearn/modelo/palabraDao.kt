@@ -3,9 +3,7 @@ package com.example.nextandlearn.modelo
 import androidx.room.*
 
 /*
-    La interfaz palabraDao es un DAO de la biblioteca Room que es un mecanismo que nos ofrece
-    esta biblioteca para poder trabajar con los datos de una determinada tabla de nuestra base de datos.
-    En este caso nos permite trabajar con los datos de nuestra tabla "Palabras".
+    Esta interfaz nos permite trabajar con los datos de nuestra tabla "Palabras".
     De esta forma se han definido los métodos necesarios para poder trabajar con los datos de esta
     tabla.
  */

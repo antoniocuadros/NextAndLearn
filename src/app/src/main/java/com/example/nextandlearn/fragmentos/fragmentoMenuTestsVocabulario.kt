@@ -40,17 +40,14 @@ class fragmentoMenuTestsVocabulario : Fragment() {
     private val argumentos:fragmentoCartasPalabrasArgs by navArgs()
 
     /*
-     El método onCreate de cualquier Fragment es llamado cuando se crea inicialmente el fragmento,
-     se llama al método onCreate de la clase superior, Fragment para crear el fragmento.
+     Se llama al método onCreate de la clase superior con el objetivo de crear el fragmento.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
     /*
-    El método onCreateView de un fragmento crea y devuelve la jerarquía de la vista asociada con el
-    fragmento.
-    Adicionalmente de forma específica a este fragmento se realizan los siguientes pasos:
+    Se realizan los siguientes pasos:
         -> Paso 1): Se infla y obtiene la vista
         -> Paso 2): Se vinculan los atributos relacionados con vistas con las vistas correspondientes.
         -> Paso 3): Se añaden los listeners de los botones para tests y vocabulario.

@@ -18,10 +18,8 @@ import org.w3c.dom.Text
 import java.util.*
 
     /*
-        Esta clase representa el adaptador de la lista de palabras que se muestran como cartas.
-        Este adaptador se encargará de rellenar la vista de la lista de palabras
-        adaptando cada colección a un item según el layout 'palabra_item' en forma de carta
-        e irá añadiendo a la vista dichas cartas a la vista que contiene la lista de palabras.
+        Este adapatador, dada una lista de objetos de tipo Palabra adaptará cada objeto a un item según lo definido en el layout 'palabra\_item' y los añadirá a la vista en forma de slider.
+
      */
     /*
         Los atributos de esta clase son:
@@ -120,7 +118,7 @@ class ListaVocabularioAdapter(var palabras: MutableList<Palabra>, modo:Int, cont
 
     }
     /*
-        En este método se infla la vista de cada item, pero aún sin asignar el contenido
+        Se infla la vista de un determinado item a mostrar
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListaVocabularioAdapter.Pager2ViewHolder {
         return Pager2ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.palabra_item, parent, false),modo)
@@ -134,8 +132,7 @@ class ListaVocabularioAdapter(var palabras: MutableList<Palabra>, modo:Int, cont
     }
 
     /*
-        Este método se encarga de dotar de contenido a cada item que se añade al RecyclerView de palabras.
-        En este caso se añade el contenido a la imagen y texto de la palbra. Adicionalmente se comprueba
+        Se añade el contenido a la imagen y texto de la palbra. Adicionalmente se comprueba
         si no hay ninguna palabra para añadir una carta que indique este caso.
      */
     override fun onBindViewHolder(holder: ListaVocabularioAdapter.Pager2ViewHolder, position: Int) {

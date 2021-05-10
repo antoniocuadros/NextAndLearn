@@ -106,8 +106,7 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
 
 
     /*
-        El método onCreate de cualquier Fragment es llamado cuando se crea inicialmente el fragmento,
-        se llama al método onCreate de la clase superior, Fragment para crear el fragmento.
+        Se llama al método onCreate de la clase superior con el objetivo de crear el fragmento.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -115,9 +114,7 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
     }
 
     /*
-    El método onCreateView de un fragmento crea y devuelve la jerarquía de la vista asociada con el
-    fragmento.
-    Adicionalmente de forma específica a este fragmento se realizan los siguientes pasos:
+    Se realizan los siguientes pasos:
         -> Paso 1): Se infla y obtiene la vista
         -> Paso 2): Se obtiene el tipo de test a realizar y se almacena que tipo de test se va a realizar.
         -> Paso 3): Se vinculan las vistas con los atributos correspondientes.
@@ -126,6 +123,7 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
         -> Paso 6): Se añaden las opciones a la vista.
         -> Paso 7): Se añaden los listeners para que el usuario pueda hacer click
         -> Paso 8): Se gestiona el botón para pasar a la siguiente pregunta que comprobará si se ha acertado o fallado
+        -> Paso 9): Se devuelve la vista.
      */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

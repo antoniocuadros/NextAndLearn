@@ -32,8 +32,7 @@ class fragmentoNiveles : Fragment() {
     private lateinit var cuadricula_niveles: GridView
 
     /*
-        El método onCreate de cualquier Fragment es llamado cuando se crea inicialmente el fragmento,
-        se llama al método onCreate de la clase superior, Fragment para crear el fragmento.
+        Se llama al método onCreate de la clase superior con el objetivo de crear el fragmento.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,13 +43,11 @@ class fragmentoNiveles : Fragment() {
     }
 
     /*
-    El método onCreateView de un fragmento crea y devuelve la jerarquía de la vista asociada con el
-    fragmento.
-    Adicionalmente de forma específica a este fragmento se realizan los siguientes pasos:
+    Se realizan los siguientes pasos:
         -> Paso 1): Se infla y obtiene la vista
-        -> Paso 2): Se inicializa el gridview que rellerá la vista con los niveles.
+        -> Paso 2): Se inicializa el gridview que rellenará la vista con los niveles.
         -> Paso 3): Se establece el clickLister de cada item de la lista de tal forma que se puede hacer click
-        en los niveles para redigirnos al fragmento que contiene las colecciones de dicho nivel.
+        en los niveles para redirigirnos al fragmento que contiene las colecciones de dicho nivel.
         -> Paso 4): Se devuelve la vista.
      */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

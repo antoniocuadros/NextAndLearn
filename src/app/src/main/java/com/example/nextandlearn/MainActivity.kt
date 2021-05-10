@@ -17,7 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
  */
 class MainActivity : AppCompatActivity() {
     /*
-        El método onCreatese llama al inicio de la actividad para vincular la vista correspondiente.
+        El método onCreate se llama al inicio de la actividad para vincular la vista correspondiente.
         Además se establece el menú inferior y su funcionamiento.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,12 +39,6 @@ class MainActivity : AppCompatActivity() {
         menu_inferior.setupWithNavController(controlador_navegacion)
     }
 
-    /*
-        Esta función se encarga de obtener la base de datos
-     */
-    private fun obtener_db(){
-        obtenerBaseDatos(applicationContext)
-    }
 
     /*
         Esta función nos sirve para navegar de la lista de colecciones al menu de tests o vocabulario

@@ -13,10 +13,7 @@ import com.example.nextandlearn.modelo.Coleccion
 import com.example.nextandlearn.modelo.Nivel
 
 /*
-    Esta clase representa el adaptador de la lista de niveles. Este adaptador se encargará
-    de rellenar la vista de la lista de niveles adaptando cada nivel a un item según el
-    layout 'nivel_item' en forma de carta e irá añadiendo a la vista dichas cartas a la vista
-    que contiene la lista de niveles.
+    Este adapatador, dada una lista de objetos de tipo Nivel adaptará cada objeto a un item según lo definido en el layout 'nivel\_item' y los añadirá a la vista en forma de lista a una columna.
  */
 /*
     El atributo de esta clase es:
@@ -25,14 +22,11 @@ import com.example.nextandlearn.modelo.Nivel
 class NivelAdapter(var listaNiveles:MutableList<Nivel>, context: Context): BaseAdapter(){
     var context = context
     /*
-        Este método se encargará de construir cada elemento del GridView según lo definido en el
-        layout 'coleccion_item'.
-
-        Para ello se siguen los siguientes pasos:
+        Se siguen los siguientes pasos:
         -> 1) Se obtiene la vista.
         -> 2) Se obtiene de la lista de niveles la que corresponde a la posición que se va a construir
               obteniendo la posición como un parámetro.
-        -> 3) Se definen variables que referiencian los elementos (views) que forman un item (carta)
+        -> 3) Se definen variables que referencian los elementos (views) que forman un item (carta)
               de la lista de niveles.
         -> 4) Se asignan los valores del nivel que va en esa posición a las vistas obtenidas en
               el paso anterior.
@@ -64,23 +58,21 @@ class NivelAdapter(var listaNiveles:MutableList<Nivel>, context: Context): BaseA
     }
 
     /*
-        Para una determinada posición dada como argumento se devuelve
-        la colección asociada a dicha posición de la lista de colecciones.
+        Se devuelve el contenido de una posición del vector de items a mostrar.
      */
     override fun getItem(position: Int): Any {
         return listaNiveles[position]
     }
 
     /*
-        En este método, dada una posición como parámetro se devuelve un identificador,
-        en este caso al ser una lista, es la misma posición.
+        Se devuelve el identificador de una posición.
      */
     override fun getItemId(position: Int): Long {
         return position.toLong()
     }
 
     /*
-        Este método devuelve la longitud de la lista de colecciones.
+        Se devuelve la longitud del vector de elementos a mostrar.
      */
     override fun getCount(): Int {
         return listaNiveles.size
