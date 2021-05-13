@@ -12,6 +12,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.cardview.widget.CardView
+import androidx.core.view.marginBottom
 import androidx.navigation.fragment.navArgs
 import com.example.nextandlearn.MainActivity
 import com.example.nextandlearn.R
@@ -100,6 +102,15 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
     private lateinit var boton_grabar:ImageButton
     private lateinit var texto_porcentaje_actual:TextView
     private lateinit var texto_porcentaje:TextView
+    private lateinit var carta1:CardView
+    private lateinit var carta2:CardView
+    private lateinit var carta3:CardView
+    private lateinit var carta4:CardView
+    private lateinit var fondocarta1:CardView
+    private lateinit var fondocarta2:CardView
+    private lateinit var fondocarta3:CardView
+    private lateinit var fondocarta4:CardView
+    private lateinit var img1:ImageView
 
     private lateinit var boton_siguiente_acierto_fallo:Button
     private lateinit var texto_acierto_fallo:TextView
@@ -449,10 +460,10 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
          */
         when(opcion){
             1 ->{ //Tipo 1, se pone una palabra en español y las opciones en inglés
-                enunciado.text = "¿Cual de las siguientes opciones es " + vocabulario[pregunta].espanol.capitalize() + " en inglés?"
+                enunciado.text = "¿Cómo es " + vocabulario[pregunta].espanol.capitalize() + " en inglés?"
             }
             2 ->{ //Tipo 2, listening, se da una reproducción de una palabra y se debe seleccionar la opción en inglés
-                enunciado.text = "¿Cual de las siguientes opciones se corresponde con la palabra que se reproduce?"
+                enunciado.text = "Seleccione la palabra que se reproduce"
                 boton_sonido.visibility = View.VISIBLE
                 boton_sonido.setOnClickListener {
                     reproductor.speak(vocabulario[pregunta].ingles, TextToSpeech.QUEUE_FLUSH, null, null)
@@ -481,25 +492,63 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
 
 
 
-        //Opcion 1
-        identificador_imagen = context?.resources?.getIdentifier(opciones[0].imagen, "drawable", "com.example.nextandlearn")!!
-        imagen_opcion_1.setImageResource(identificador_imagen)
-        text_opcion_1.text = opciones[0].ingles.capitalize()
+        if(opcion != 1){
+            identificador_imagen = context?.resources?.getIdentifier(opciones[0].imagen, "drawable", "com.example.nextandlearn")!!
+            imagen_opcion_1.setImageResource(identificador_imagen)
 
-        //Opcion 2
-        identificador_imagen = context?.resources?.getIdentifier(opciones[2].imagen, "drawable", "com.example.nextandlearn")!!
-        imagen_opcion_2.setImageResource(identificador_imagen)
-        text_opcion_2.text = opciones[2].ingles.capitalize()
+            identificador_imagen = context?.resources?.getIdentifier(opciones[2].imagen, "drawable", "com.example.nextandlearn")!!
+            imagen_opcion_2.setImageResource(identificador_imagen)
 
-        //Opcion 3
-        identificador_imagen = context?.resources?.getIdentifier(opciones[1].imagen, "drawable", "com.example.nextandlearn")!!
-        imagen_opcion_3.setImageResource(identificador_imagen)
-        text_opcion_3.text = opciones[1].ingles.capitalize()
+            identificador_imagen = context?.resources?.getIdentifier(opciones[1].imagen, "drawable", "com.example.nextandlearn")!!
+            imagen_opcion_3.setImageResource(identificador_imagen)
 
-        //Opcion 4
-        identificador_imagen = context?.resources?.getIdentifier(opciones[3].imagen, "drawable", "com.example.nextandlearn")!!
-        imagen_opcion_4.setImageResource(identificador_imagen)
-        text_opcion_4.text = opciones[3].ingles.capitalize()
+            identificador_imagen = context?.resources?.getIdentifier(opciones[3].imagen, "drawable", "com.example.nextandlearn")!!
+            imagen_opcion_4.setImageResource(identificador_imagen)
+
+            text_opcion_1.text = opciones[0].ingles.capitalize()
+            text_opcion_2.text = opciones[2].ingles.capitalize()
+            text_opcion_3.text = opciones[1].ingles.capitalize()
+            text_opcion_4.text = opciones[3].ingles.capitalize()
+
+        }
+        else{
+            identificador_imagen = context?.resources?.getIdentifier(vocabulario[pregunta].imagen, "drawable", "com.example.nextandlearn")!!
+            //imagen_opcion_1.setImageResource(identificador_imagen)
+            //imagen_opcion_2.setImageResource(identificador_imagen)
+            //imagen_opcion_3.setImageResource(identificador_imagen)
+            //imagen_opcion_4.setImageResource(identificador_imagen)
+            carta1!!.visibility = View.GONE
+            carta2!!.visibility = View.GONE
+            carta3!!.visibility = View.GONE
+            carta4!!.visibility = View.GONE
+
+            text_opcion_1.text = opciones[0].ingles.capitalize()
+            var margin1 = fondocarta1.layoutParams as LinearLayout.LayoutParams
+            margin1.setMargins(30,30,30,30)
+
+            text_opcion_2.text = opciones[2].ingles.capitalize()
+            var margin2 = fondocarta2.layoutParams as LinearLayout.LayoutParams
+            margin2.setMargins(30,30,30,30)
+            fondocarta2.setPadding(40,40,40,40)
+
+            text_opcion_3.text = opciones[1].ingles.capitalize()
+            var margin3 = fondocarta3.layoutParams as LinearLayout.LayoutParams
+            margin3.setMargins(30,30,30,30)
+            fondocarta3.setPadding(40,40,40,40)
+
+            text_opcion_4.text = opciones[3].ingles.capitalize()
+            var margin4 = fondocarta4.layoutParams as LinearLayout.LayoutParams
+            margin4.setMargins(30,30,30,30)
+            fondocarta4.setPadding(40,40,40,40)
+
+            identificador_imagen = context?.resources?.getIdentifier(vocabulario[pregunta].imagen, "drawable", "com.example.nextandlearn")!!
+            img1.setImageResource(identificador_imagen)
+            img1.visibility = View.VISIBLE
+        }
+
+
+
+
     }
 
     /*
@@ -581,6 +630,16 @@ class fragmentoTests : Fragment(), TextToSpeech.OnInitListener {
         boton_grabar = view.findViewById(R.id.boton_grabar)
         texto_porcentaje_actual = view.findViewById(R.id.texto_porcentaje_actual)
         texto_porcentaje= view.findViewById(R.id.texto_porcentaje)
+        carta1 = view?.findViewById<CardView>(R.id.carta1)
+        carta2 = view?.findViewById<CardView>(R.id.carta2)
+        carta3 = view?.findViewById<CardView>(R.id.carta3)
+        carta4 = view?.findViewById<CardView>(R.id.carta4)
+        img1 = view?.findViewById<ImageView>(R.id.imagen_sola)
+        fondocarta1 = view?.findViewById<CardView>(R.id.fondotexto1)
+        fondocarta2 = view?.findViewById<CardView>(R.id.fondotexto2)
+        fondocarta3 = view?.findViewById<CardView>(R.id.fondotexto3)
+        fondocarta4 = view?.findViewById<CardView>(R.id.fondotexto4)
+
 
         boton_siguiente_acierto_fallo = view.findViewById(R.id.boton_siguiente2)
         texto_acierto_fallo = view.findViewById(R.id.mensaje_resultado)
