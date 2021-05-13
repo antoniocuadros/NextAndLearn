@@ -128,7 +128,7 @@ class fragmentoMenuTestsVocabulario : Fragment() {
         var porcentajeWriting = (coleccion_obtenida[0].puntos_writing * 100) / db.palabraDao.obtenerNumPalabrasColeccion(argumentos.coleccion)
         var porcentajeSpeaking = (coleccion_obtenida[0].puntos_speaking * 100) / db.palabraDao.obtenerNumPalabrasColeccion(argumentos.coleccion)
 
-        val modelo_grafico:AAChartModel = AAChartModel().chartType(AAChartType.Column).title("Porcentaje aciertos tests")
+        val modelo_grafico:AAChartModel = AAChartModel().chartType(AAChartType.Column).title("Progreso")
             .dataLabelsEnabled(true).touchEventEnabled(false).yAxisTitle("").yAxisMax(100F)
             .series(arrayOf(
                 AASeriesElement()
