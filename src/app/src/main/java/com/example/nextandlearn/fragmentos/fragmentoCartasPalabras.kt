@@ -3,6 +3,7 @@ package com.example.nextandlearn.fragmentos
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.ImageButton
@@ -21,7 +22,7 @@ import java.util.*
 /*
     Este fragmento dota de funcionalidad a la vista que muestra una lista de palabras en forma de cartas.
  */
-class fragmentoCartasPalabras : Fragment(){
+class fragmentoCartasPalabras : Fragment(),TextToSpeech.OnInitListener{
     /*
         Los atributos de esta clase son:
             -> argumentos: Variable de tipo fragmentoCartasPalabrasArgs utilizado para recibir datos desde otros fragmentos.
@@ -37,6 +38,7 @@ class fragmentoCartasPalabras : Fragment(){
     private lateinit var palabras:MutableList<Palabra>
     private lateinit var animator:AnimatorSet
     private lateinit var animator2:AnimatorSet
+    private lateinit var reproductor:TextToSpeech
     private var modo = 0
 
     /*
@@ -62,6 +64,7 @@ class fragmentoCartasPalabras : Fragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         // Paso 1
         val view =  inflater.inflate(R.layout.fragmento_cartas_palabras, container, false)
+        reproductor =  TextToSpeech(requireContext(), this)
 
         // Paso 2
         var navegacion: BottomNavigationView = requireActivity().findViewById(R.id.menu_inferior);
@@ -133,6 +136,8 @@ class fragmentoCartasPalabras : Fragment(){
             var palabra_espanol_vista =  vista.findViewById<TextView>(R.id.palabra_espanol)
             var boton_reproducir_vista = vista.findViewById<ImageButton>(R.id.boton_reproducir)
 
+
+
             //Estaba la palabra en inglés
             if(palabra_espanol_vista.text == palabra.ingles.capitalize()){
                 animator.setTarget(vista)
@@ -140,6 +145,8 @@ class fragmentoCartasPalabras : Fragment(){
 
                 animator.start()
                 animator2.start()
+
+
 
                 palabra_espanol_vista.text = palabra.espanol.capitalize()
                 boton_reproducir_vista.visibility = View.GONE
@@ -150,11 +157,19 @@ class fragmentoCartasPalabras : Fragment(){
                 animator.start()
                 animator2.start()
 
+                reproductor.speak(palabra.ingles, TextToSpeech.QUEUE_FLUSH, null, null)
+
                 palabra_espanol_vista.text = palabra.ingles.capitalize()
                 boton_reproducir_vista.visibility = View.VISIBLE
             }
         }
         slider_palabras.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         indicador_slider.setViewPager(slider_palabras)
+    }
+
+    override fun onInit(status: Int) {
+        if(status == TextToSpeech.SUCCESS){
+            reproductor.language = Locale.UK
+        }
     }
 }
