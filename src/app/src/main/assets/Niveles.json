@@ -10,5 +10,21 @@
   {
     "nombre": "A2 Flyers",
     "imagen": "a2"
+  },
+  {
+    "nombre": "B1 Pet",
+    "imagen": "b1"
+  },
+  {
+    "nombre": "B2 First",
+    "imagen": "b2"
+  },
+  {
+    "nombre": "C1 Advanced",
+    "imagen": "c1"
+  },
+  {
+    "nombre": "C2 Proficiency",
+    "imagen": "c2"
   }
 ]

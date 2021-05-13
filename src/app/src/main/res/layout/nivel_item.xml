@@ -14,38 +14,15 @@
         android:orientation="horizontal"
         android:gravity="center"
         >
-        <androidx.cardview.widget.CardView
-            android:layout_width="146dp"
-            android:layout_height="98dp"
-            app:cardCornerRadius="10dp"
-            android:id="@+id/carta_nivel_imagen"
-            android:layout_margin="10dp"
 
-            >
             <ImageView
                 android:layout_centerHorizontal="true"
                 android:id="@+id/imagen_nivel_palabra"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/prea1"
                 />
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/nombre_nivel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:text="Pre A1 Starters"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

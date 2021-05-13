@@ -66,7 +66,7 @@ class fragmentoMenuTestsVocabulario : Fragment() {
 
         //Paso 3
         //Añadimos los listeners de los botones
-        anadeListenersBotonoes()
+        anadeListenersBotones()
 
         //Paso 4
         //Añadimos el gráfico
@@ -89,7 +89,7 @@ class fragmentoMenuTestsVocabulario : Fragment() {
         Este método se encarga de vincular cada atributo de la clase de tipo vista
         con su vista correspondiente.
      */
-    private fun anadeListenersBotonoes(){
+    private fun anadeListenersBotones(){
         boton_vocabulario.setOnClickListener {
             var coleccion = argumentos.coleccion
             (activity as MainActivity).onVocabularioSelected(coleccion)

@@ -42,7 +42,6 @@ class NivelAdapter(var listaNiveles:MutableList<Nivel>, context: Context): BaseA
 
         //Paso 3)
         val imagen_nivel_palabra = vista.findViewById<ImageView>(R.id.imagen_nivel_palabra)
-        val nombre_nivel = vista.findViewById<TextView>(R.id.nombre_nivel)
 
 
         // Paso 4)
@@ -50,7 +49,6 @@ class NivelAdapter(var listaNiveles:MutableList<Nivel>, context: Context): BaseA
         var id_imagen = context.resources.getIdentifier(imagen, "drawable", "com.example.nextandlearn")
         imagen_nivel_palabra.setImageResource(id_imagen)
 
-        nombre_nivel.text = nivel.nombre
 
 
         //Paso 5)
